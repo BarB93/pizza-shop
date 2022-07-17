@@ -7,10 +7,10 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <div className="header__logo">
-          <img width="38" src={Logo} alt="Pizza logo" />
+          <img width="55" src={Logo} alt="Pizza logo" />
           <div>
             <h1>Pizza Shop</h1>
-            <p>самая вкусная пицца во вселенной</p>
+            <p>сделаем вкусно и доставим быстро</p>
           </div>
         </div>
         <div className="header__cart">
