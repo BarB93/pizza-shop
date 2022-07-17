@@ -1,16 +1,19 @@
 @import '../variables';
 
 .wrapper-pizza-block {
-  flex: 1 0 25%;
+  flex: 0 0 25%;
   margin-bottom: 65px;
 }
 
 .pizza-block {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  text-align: center;
+  height: 100%;
   min-height: 391px;
   margin: 0 10px 0;
   padding: 0 10px;
+  text-align: center;
 
   &__image {
     display: block;
@@ -63,8 +66,9 @@
   }
 
   &__bottom {
+    flex: 1 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     margin-top: 20px;
 
@@ -132,7 +136,7 @@
     }
 
     &__bottom {
-      margin-top: 30px;
+      margin-top: 20px;
     }
 
     &__btn {
