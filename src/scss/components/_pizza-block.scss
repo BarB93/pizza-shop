@@ -1,53 +1,63 @@
 @import '../variables';
 
-.pizza-block {
-  width: 280px;
-  text-align: center;
+.wrapper-pizza-block {
+  flex: 1 0 25%;
   margin-bottom: 65px;
+}
 
-  &:not(:nth-of-type(4n)) {
-    margin-right: 35px;
-  }
+.pizza-block {
+  position: relative;
+  text-align: center;
+  min-height: 391px;
+  margin: 0 10px 0;
+  padding: 0 10px;
 
   &__image {
+    display: block;
     width: 260px;
+    min-height: 260px;
+    min-height: 260px;
   }
 
   &__title {
     font-size: 20px;
     font-weight: 900;
     letter-spacing: 1%;
-    margin-bottom: 20px;
+    text-align: start;
+    color: #505061;
+
+    .active & {
+      opacity: 0;
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    text-align: start;
+    color: rgb(120, 124, 130);
+
+    .active & {
+      opacity: 0;
+    }
   }
 
   &__selector {
-    display: flex;
-    background-color: #f3f3f3;
-    border-radius: 10px;
+    display: none;
     flex-direction: column;
-    padding: 6px;
+    padding: 20px 10px 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
 
-    ul {
+    .active & {
       display: flex;
-      flex: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
 
-      &:first-of-type {
-        margin-bottom: 6px;
-      }
-
-      li {
-        padding: 8px;
-        flex: 1;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 14px;
-        @include noselect();
-        &.active {
-          background: #ffffff;
-          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
-          border-radius: 5px;
-          cursor: auto;
-        }
+      .pizza-block__title,
+      .pizza-block__description {
+        opacity: 1;
       }
     }
   }
@@ -57,12 +67,92 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+
+    .active & {
+      opacity: 0;
+    }
   }
 
   &__price {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 27px;
     letter-spacing: 0.015em;
+  }
+
+  &__btn-select {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    height: 40px;
+    padding: 8px 27px;
+    border: 1px solid $orange;
+    border-radius: 22px;
+    outline: none;
+    background-color: white;
+    color: $orange;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    background: transparent;
+  }
+
+  .selector {
+    ul {
+      display: flex;
+      flex: 1;
+      height: 32px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 40px;
+      background-color: rgb(243, 243, 247);
+
+      li {
+        padding: 8px;
+        flex: 1;
+        font-weight: 600;
+        font-size: 14px;
+        border-radius: inherit;
+        cursor: pointer;
+        @include noselect();
+        &.active {
+          background-color: rgb(120, 124, 130);
+          color: #fff;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+          cursor: auto;
+        }
+      }
+    }
+
+    &__sizes {
+      margin-top: 15px;
+    }
+
+    &__bottom {
+      margin-top: 30px;
+    }
+
+    &__btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: 40px;
+      padding: 8px 16px;
+      border: 1px solid rgb(227, 24, 54);
+      border-radius: 22px;
+      background-color: rgb(227, 24, 54);
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      color: #fff;
+      cursor: pointer;
+      outline: none;
+      overflow: hidden;
+    }
   }
 }
