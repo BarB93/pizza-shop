@@ -1,8 +1,8 @@
-import './App.css'
 import Categories from './components/Categories'
 import Header from './components/Header'
-import PizzaItem from './components/PizzaItem'
+import PizzaList from './components/PizzaList'
 import Sort from './components/Sort'
+
 import './scss/app.scss'
 
 function App() {
@@ -15,10 +15,7 @@ function App() {
             <Categories />
             <Sort />
           </div>
-          <h2 className="content__title">Все пиццы</h2>
-          <div className="content__items">
-            <PizzaItem title={'Чизбургер-пицца'} price={395} />
-          </div>
+          <PizzaList />
         </div>
       </div>
     </div>
