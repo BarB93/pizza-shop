@@ -139,7 +139,7 @@
     "types": [0, 1],
     "sizes": [20, 28, 33],
     "price": 499,
-    "category": [1, 5],
+    "category": [1],
     "rating": 7
   },
   {
@@ -162,6 +162,39 @@
     "sizes": [20, 28, 33],
     "price": 429,
     "category": [1],
+    "rating": 6
+  },
+  {
+    "id": 15,
+    "imageUrl": "https://staticy.dominospizza.ru/api/medium/ProductOsg/Web/4SEASON/NULL/NULL/RU",
+    "title": "4 сезона",
+    "description": "Бекон, Ветчина, Грибы, Курица, Лук, Маслины, Огурцы маринованные, Охотничьи колбаски, Пепперони, Свежие томаты, Соус BBQ, Сыр Моцарелла, Сыр Фета, Томатный соус",
+    "types": [0, 1],
+    "sizes": [20, 28],
+    "price": 789,
+    "category": [1, 5],
+    "rating": 6
+  },
+  {
+    "id": 16,
+    "imageUrl": "https://staticy.dominospizza.ru/api/medium/ProductOsg/Web/CHHM/NULL/NULL/RU",
+    "title": "Сырная с ветчиной",
+    "description": "Ветчина, Сыр Моцарелла, Томатный соус",
+    "types": [0, 1],
+    "sizes": [20, 28, 33],
+    "price": 289,
+    "category": [1],
+    "rating": 6
+  },
+  {
+    "id": 17,
+    "imageUrl": "https://staticy.dominospizza.ru/api/medium/ProductOsg/Web/PEPDER/NULL/NULL/RU",
+    "title": "Пепперони по-деревенски",
+    "description": "Огурцы маринованные, Пепперони, Сыр Моцарелла, Томатный соус",
+    "types": [0, 1],
+    "sizes": [20, 28, 33],
+    "price": 289,
+    "category": [2],
     "rating": 6
   }
 ]
