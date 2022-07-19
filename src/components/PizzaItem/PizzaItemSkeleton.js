@@ -1,17 +1,19 @@
 import React from 'react'
 
+import styles from './PizzaItem.module.scss'
+
 const PizzaItemSkeleton = (props) => {
   return (
-    <div className='wrapper-pizza-block'>
-      <div className='pizza-block'>
-        <div className='pizza-block-skeleton__image-wrapper'>
-          <div className='pizza-block-skeleton__image skeleton'></div>
+    <div className={`${styles.wrapperPizzaBlock}`}>
+      <div className={`${styles.pizzaBlock}`}>
+        <div className={`${styles.pizzaBlockSkeleton__imageWrapper}`}>
+          <div className={`${styles.pizzaBlockSkeleton__image} skeleton`}></div>
         </div>
-        <div className='pizza-block-skeleton__info pizza-block__info skeleton'></div>
-        <div className='pizza-block-skeleton__footer'>
-          <div  className='pizza-block-skeleton__bottom'>
-              <div className='pizza-block-skeleton__btn skeleton'></div>
-              <div className='pizza-block-skeleton__price skeleton'></div>
+        <div className={`${styles.pizzaBlockSkeleton__info} ${styles.pizzaBlock__info} skeleton`}></div>
+        <div className={`${styles.pizzaBlockSkeleton__footer}`}>
+          <div  className={`${styles.pizzaBlockSkeleton__bottom}`}>
+              <div className={`${styles.pizzaBlockSkeleton__btn} skeleton`}></div>
+              <div className={`${styles.pizzaBlockSkeleton__price} skeleton`}></div>
           </div>
         </div>
       </div>
