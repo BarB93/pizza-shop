@@ -1,13 +1,13 @@
-@import '../variables';
+@import '../../scss/variables';
 
-.wrapper-pizza-block {
+.wrapperPizzaBlock {
   flex: 0 1 25%;
   display: flex;
   justify-content: center;
   padding: 0 20px 65px;
 }
 
-.pizza-block {
+.pizzaBlock {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -72,8 +72,8 @@
       left: 0;
       right: 0;
 
-      .pizza-block__title,
-      .pizza-block__description {
+      .pizzaBlock__title,
+      .pizzaBlock__description {
         opacity: 1;
       }
     }
@@ -98,7 +98,7 @@
     letter-spacing: 0.015em;
   }
 
-  &__btn-select {
+  &__btnSelect {
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -175,8 +175,8 @@
   }
 }
 
-.pizza-block-skeleton {
-  &__image-wrapper{
+.pizzaBlockSkeleton {
+  &__imageWrapper {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -220,5 +220,4 @@
     height: 30px;
     border-radius: 5px;
   }
-
 }

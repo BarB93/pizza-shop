@@ -1,20 +1,22 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-import Logo from '../assets/img/pizza-logo.svg'
+import Logo from '../../assets/img/pizza-logo.svg'
+import styles from './Header.module.scss'
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__logo">
-          <img width="55" src={Logo} alt="Pizza logo" />
+    <header className={styles.header}>
+      <div className={`${styles.container} container`}>
+        <div className={styles.header__logo}>
+          <NavLink to='/'><img width="55" src={Logo} alt="Pizza logo" /></NavLink>
           <div>
-            <h1>Pizza Shop</h1>
+            <NavLink to='/'> <h1>Pizza Shop</h1></NavLink>
             <p>сделаем вкусно и доставим быстро</p>
           </div>
         </div>
-        <div className="header__cart">
-          <a href="/cart.html" className="button button--cart">
+        <div className={styles.header__cart}>
+          <NavLink to="/cart" className="button button--cart">
             <span>520 ₽</span>
             <div className="button__delimiter"></div>
             <svg
@@ -46,7 +48,7 @@ const Header = () => {
               />
             </svg>
             <span>3</span>
-          </a>
+          </NavLink>
         </div>
       </div>
     </header>
