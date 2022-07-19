@@ -8,6 +8,19 @@ body {
   background-color: $background;
 }
 
+a {
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: all .3s linear;
+  
+  &:active {
+    transform: translateY(3px);
+  }
+}
+
 .wrapper {
   width: calc(100vw - 100px);
   min-height: calc(100vh - 100px);
