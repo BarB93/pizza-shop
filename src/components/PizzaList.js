@@ -20,7 +20,7 @@ const PizzaList = () => {
   return (
     <>
       <h2 className='content__title'>Все пиццы</h2>
-      <div className='content__items'>{isLoading ? new Array(12).fill(0).map(item =><PizzaItemSkeleton /> ) : pizzas.map((pizza) => <PizzaItem key={pizza.title} {...pizza} />)}</div>
+      <div className='content__items'>{isLoading ? new Array(12).fill(0).map((item, index) =><PizzaItemSkeleton key={index}/> ) : pizzas.map((pizza) => <PizzaItem key={pizza.title} {...pizza} />)}</div>
     </>
   )
 }
