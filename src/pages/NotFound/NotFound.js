@@ -7,6 +7,7 @@ const NotFound = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{'Страница не найдена :('}</h1>
+      <p>К сожеления данная страница отсутвует в нашем интернет-магазине</p>
       <button className={styles.btn}><NavLink to='/'>На главную</NavLink></button>
     </div>
   )
