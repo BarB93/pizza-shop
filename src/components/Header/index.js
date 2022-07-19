@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Logo from '../../assets/img/pizza-logo.svg'
 import styles from './Header.module.scss'
@@ -9,14 +9,14 @@ const Header = () => {
     <header className={styles.header}>
       <div className={`${styles.container} container`}>
         <div className={styles.header__logo}>
-          <NavLink to='/'><img width="55" src={Logo} alt="Pizza logo" /></NavLink>
+          <Link to='/'><img width="55" src={Logo} alt="Pizza logo" /></Link>
           <div>
-            <NavLink to='/'> <h1>Pizza Shop</h1></NavLink>
+            <Link to='/'> <h1>Pizza Shop</h1></Link>
             <p>сделаем вкусно и доставим быстро</p>
           </div>
         </div>
         <div className={styles.header__cart}>
-          <NavLink to="/cart" className="button button--cart">
+          <Link to="/cart" className="button button--cart">
             <span>520 ₽</span>
             <div className="button__delimiter"></div>
             <svg
@@ -48,7 +48,7 @@ const Header = () => {
               />
             </svg>
             <span>3</span>
-          </NavLink>
+          </Link>
         </div>
       </div>
     </header>
