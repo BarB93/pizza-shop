@@ -1,6 +1,7 @@
 @import '../../scss/variables';
 
 .title {
+  font-weight: 800;
   margin: 35px 0;
 
   @media screen and (max-width: $mobile-2) {
