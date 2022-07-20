@@ -1,5 +1,13 @@
+@import '../../scss/variables';
+
 .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @media screen and (max-width: $desktop-2) {
+    justify-content: center;
+  }
 }

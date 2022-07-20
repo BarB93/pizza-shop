@@ -33,7 +33,7 @@
   min-height: 391px;
   text-align: center;
 
-  @media screen and (max-width: $desktop-2) {
+  @media screen and (max-width: $desktop-3) {
     min-width: 250px;
   }
 
@@ -44,7 +44,7 @@
     min-height: 260px;
     object-fit: contain;
 
-    @media screen and (max-width: $desktop-2) {
+    @media screen and (max-width: $desktop-3) {
       width: 230px;
       height: 230px;
     }
@@ -55,7 +55,7 @@
     margin-bottom: 20px;
     overflow: hidden;
 
-    @media screen and (max-width: $desktop-2) {
+    @media screen and (max-width: $desktop-3) {
       height: 83px;
       margin-bottom: 15px;
     }
@@ -222,7 +222,7 @@
     height: 240px;
     border-radius: 50%;
 
-    @media screen and (max-width: $desktop-2) {
+    @media screen and (max-width: $desktop-3) {
       width: 220px;
       height: 220px;
     }
