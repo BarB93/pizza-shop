@@ -34,7 +34,7 @@ button {
     margin: 25px auto;
   }
   @media screen and (max-width: $mobile-1) {
-    width: 100vw;
+    width: auto;
     margin: 0 auto;
   }
   @media screen and (max-width: $mobile-2) {
@@ -43,7 +43,7 @@ button {
     width: calc(100vw - 50px);
   }
   @media screen and (max-width: $mobile-4) {
-    width: 100vw;
+    width: auto;
     margin: 0 auto;
   }
 }
