@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'libs/normalize';
+@import 'mixins';
 @import 'animations';
 
 @import 'components/all';
@@ -14,8 +15,8 @@ a {
 
 button {
   cursor: pointer;
-  transition: all .3s linear;
-  
+  transition: all 0.3s linear;
+
   &:active {
     transform: translateY(3px);
   }
@@ -28,6 +29,24 @@ button {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+
+  @media screen and (max-width: $tablet-1) {
+    width: calc(100vw - 50px);
+    margin: 25px auto;
+  }
+  @media screen and (max-width: $mobile-1) {
+    width: 100vw;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: $mobile-2) {
+    flex: 0 1 100%;
+    margin: 25px auto;
+    width: calc(100vw - 50px);
+  }
+  @media screen and (max-width: $mobile-3) {
+    width: 100vw;
+    margin: 0 auto;
+  }
 }
 
 .content {
