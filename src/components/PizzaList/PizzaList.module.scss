@@ -1,5 +1,12 @@
+@import '../../scss/variables';
+
 .title {
   margin: 35px 0;
+
+  @media screen and (max-width: $mobile-2) {
+    font-size: 25px;
+    margin: 30px 0;
+  }
 }
 
 .list {
