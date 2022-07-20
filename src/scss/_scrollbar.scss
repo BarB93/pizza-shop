@@ -14,7 +14,7 @@ html {
   @media screen and (max-width: $mobile-2) {
     scrollbar-color: $orange $background;
   }
-  @media screen and (max-width: $mobile-3) {
+  @media screen and (max-width: $mobile-4) {
     scrollbar-color: $orange #fff;
   }
 }
@@ -39,7 +39,7 @@ body::-webkit-scrollbar-track {
   @media screen and (max-width: $mobile-2) {
     background: $background;
   }
-  @media screen and (max-width: $mobile-3) {
+  @media screen and (max-width: $mobile-4) {
     background: #fff;
   }
 }
