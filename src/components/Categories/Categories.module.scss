@@ -3,14 +3,15 @@
 
 .categories {
   overflow-x: auto;
-  
-  ul {
+
+  .list {
     display: flex;
     @media screen and (max-width: $desktop-2) {
       flex: 0 1 100%;
     }
 
-    li {
+    .slide {
+      width: auto;
       background-color: #f9f9f9;
       padding: 10px 25px;
       border-radius: 30px;
