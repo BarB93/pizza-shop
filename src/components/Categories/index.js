@@ -8,7 +8,7 @@ import styles from './Categories.module.scss'
 const Categories = () => {
   const [activeCategory, setActiveCategory] = useState(4)
 
-  const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'C грибами']
+  const categories = ['Все', 'Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'C грибами']
 
   return (
     <div className={styles.categories}>
