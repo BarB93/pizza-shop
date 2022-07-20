@@ -7,13 +7,11 @@ $container-width: 90%;
 
 $duration: 0.15s;
 
-// mixins
-@mixin noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
-}
+// screen sizes
+$desktop-1: 1400px;
+$desktop-2: 1060px;
+$tablet-1: 1024px;
+$tablet-2: 990px;
+$mobile-1: 660px;
+$mobile-2: 600px;
+$mobile-3: 420px;
