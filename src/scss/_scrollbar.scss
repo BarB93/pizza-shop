@@ -1,0 +1,54 @@
+// for firefox
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #999 #f5f5f5; // thumb-color track-color
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: $orange $background; // thumb-color track-color
+
+  @media screen and (max-width: $mobile-1) {
+    scrollbar-color: $orange #fff;
+  }
+  @media screen and (max-width: $mobile-2) {
+    scrollbar-color: $orange $background;
+  }
+  @media screen and (max-width: $mobile-3) {
+    scrollbar-color: $orange #fff;
+  }
+}
+
+/*scroll-bars-styles*/
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+/* track */
+*::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #f5f5f5;
+}
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: $background;
+
+  @media screen and (max-width: $mobile-1) {
+    background: #fff;
+  }
+  @media screen and (max-width: $mobile-2) {
+    background: $background;
+  }
+  @media screen and (max-width: $mobile-3) {
+    background: #fff;
+  }
+}
+/* thumb */
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #999;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: $orange;
+}
