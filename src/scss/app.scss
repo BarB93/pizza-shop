@@ -4,8 +4,6 @@
 @import 'animations';
 @import 'scrollbar';
 
-@import 'components/all';
-
 body {
   background-color: $background;
 }
@@ -44,7 +42,7 @@ button {
     margin: 25px auto;
     width: calc(100vw - 50px);
   }
-  @media screen and (max-width: $mobile-3) {
+  @media screen and (max-width: $mobile-4) {
     width: 100vw;
     margin: 0 auto;
   }
@@ -52,6 +50,10 @@ button {
 
 .content {
   padding: 40px 0;
+
+  @media screen and (max-width: $tablet-2) {
+    padding: 20px 0;
+  }
 }
 
 .container {
