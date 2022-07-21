@@ -1,0 +1,60 @@
+@import "../../../../scss/variables";
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid $orange;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #fff;
+
+  &,path {
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover {
+    background: $orange;
+
+    path {
+      fill: #fff;
+    }
+  }
+
+  &:active {
+    transform: translateY(3px);
+  }
+
+  &_minus {
+    svg {
+      path:first-of-type {
+        display: none;
+      }
+    }
+  }
+
+  &_remove {
+    border-color: darken($color: $gray-line, $amount: 10);
+
+    &:hover {
+      background: #000;
+      svg {
+        transform: rotate(45deg);
+  
+        path {
+          fill: #fff;
+        }
+      }
+    }
+
+    svg {
+      transform: rotate(45deg);
+
+      path {
+        fill: darken($color: $gray-line, $amount: 10);
+      }
+    }
+  }
+}
