@@ -1,0 +1,53 @@
+@import '../../scss/variables';
+
+.bottom {
+  margin: 50px 0;
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      font-size: 22px;
+
+      &:last-of-type {
+        b {
+          color: $orange;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+
+    .btnBack {
+      border: 1px solid darken($color: $gray-line, $amount: 10);
+      border-color: darken($color: $gray-line, $amount: 10);
+      background: transparent;
+      color: darken($color: $gray-line, $amount: 20);
+
+      &:hover {
+        background: #000;
+        color: #fff;
+        svg {
+          path {
+            stroke: #fff;
+          }
+        }
+      }
+
+      svg {
+        margin-right: 12px;
+        path {
+          fill: transparent;
+          stroke-width: 2;
+          stroke: darken($color: $gray-line, $amount: 20);
+          transition: all 0.3 ease-in-out;
+        }
+      }
+    }
+  }
+}
