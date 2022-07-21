@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import Button from '../UI/Controls/Button'
 
 import styles from './PizzaItem.module.scss'
 
@@ -48,9 +49,7 @@ const PizzaItem = ({ title, price, imageUrl, sizes, types, description }) => {
           </div>
         </div>
         <div className={`${styles.pizzaBlock__bottom}`}>
-          <button className={`${styles.pizzaBlock__btnSelect}`} onClick={() => setActivePizza(true)}>
-            Выбрать
-          </button>
+          <Button type='select' onClick={() => setActivePizza(true)}>Выбрать</Button>
           <span className={`${styles.pizzaBlock__price}`}>от {price} ₽</span>
         </div>
         <div className={`${styles.pizzaBlock__selector} ${styles.selector}`}>
