@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import pizzaAPI from '../../api/pizzaAPI'
 import PizzaItem from '../PizzaItem'
 import PizzaItemSkeleton from '../PizzaItem/PizzaItemSkeleton'
 
@@ -10,8 +11,8 @@ const PizzaList = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    fetch('https://62d45a565112e98e484e62f8.mockapi.io/pizzas')
-      .then(data => data.json())
+    pizzaAPI
+      .fetchPizzas()
       .then(pizzas => {
         setPizzas(pizzas)
         setIsLoading(false)
