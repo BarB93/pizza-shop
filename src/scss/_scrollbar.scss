@@ -6,16 +6,16 @@
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: $orange $background; // thumb-color track-color
+  scrollbar-color: $gray $background; // thumb-color track-color
 
   @media screen and (max-width: $mobile-1) {
-    scrollbar-color: $orange #fff;
+    scrollbar-color: $gray #fff;
   }
   @media screen and (max-width: $mobile-2) {
-    scrollbar-color: $orange $background;
+    scrollbar-color: $gray $background;
   }
   @media screen and (max-width: $mobile-4) {
-    scrollbar-color: $orange #fff;
+    scrollbar-color: $gray #fff;
   }
 }
 
@@ -50,5 +50,5 @@ body::-webkit-scrollbar-track {
 }
 body::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: $orange;
+  background: $gray;
 }
