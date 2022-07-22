@@ -3,13 +3,12 @@ import Button from '../UI/Controls/Button'
 
 import styles from './PizzaItem.module.scss'
 
-const PizzaItem = ({ title, price, imageUrl, sizes, types, description }) => {
+const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
   const [activeType, setActiveType] = useState(types[0])
   const [activeSize, setActiveSize] = useState(0)
   const [activePizza, setActivePizza] = useState(false)
   const [desc, setDesc] = useState(description)
   const pizzaTypes = ['тонкое', 'традиционное']
-  const pricesForSize = [0, 280, 420]
   const $infoBlock = useRef(null)
   const $title = useRef(null)
   const $description = useRef(null)
@@ -50,7 +49,7 @@ const PizzaItem = ({ title, price, imageUrl, sizes, types, description }) => {
         </div>
         <div className={`${styles.pizzaBlock__bottom}`}>
           <Button type='select' onClick={() => setActivePizza(true)}>Выбрать</Button>
-          <span className={`${styles.pizzaBlock__price}`}>от {price} ₽</span>
+          <span className={`${styles.pizzaBlock__price}`}>от {prices[0]} ₽</span>
         </div>
         <div className={`${styles.pizzaBlock__selector} ${styles.selector}`}>
           <h4 className={`${styles.pizzaBlock__title}`}>{title}</h4>
@@ -72,7 +71,7 @@ const PizzaItem = ({ title, price, imageUrl, sizes, types, description }) => {
           <div className={`${styles.selector__bottom}`}>
             <button className={`${styles.selector__btn}`}>
               <span>В корзину</span>
-              <span>{price + pricesForSize[activeSize]} ₽</span>
+              <span>{prices[activeSize]} ₽</span>
             </button>
           </div>
         </div>
