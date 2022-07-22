@@ -65,7 +65,7 @@
     align-items: center;
     padding: 12px 25px;
     min-width: 100px;
-    background-color: $orange;
+    background-color: $black;
     border: 1px solid transparent;
     border-radius: 30px;
     text-align: center;
@@ -80,11 +80,11 @@
     }
 
     &:hover {
-      background-color: darken($orange, 8%);
+      background-color: lighten($black, 8%);
     }
 
     &:active {
-      background-color: darken($orange, 12%);
+      background-color: lighten($black, 12%);
       transform: translateY(1px);
     }
 
