@@ -1,4 +1,5 @@
 @import '../../../../scss/variables';
+@import '../../../../scss/mixins';
 
 .button {
   display: flex;
@@ -7,7 +8,7 @@
   position: relative;
   min-width: 100px;
   padding: 12px 25px;
-  background: $orange;
+  background: $violet;
   border-radius: 30px;
   border: none;
   font-size: 16px;
@@ -16,20 +17,28 @@
   text-align: center;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.3 linear;
+  transition: all $duration ease-in-out;
+  @include noselect();
 
   &:hover {
-    background: darken($orange, 10%);
+    background: lighten($violet, 5%);
+  }
+
+  &:not(.select) {
+    @media screen and (max-width: $mobile-1) {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
   }
 
   &.select {
     height: 40px;
     padding: 8px 27px;
-    border: 1px solid #f27642;
+    border: 1px solid $violet;
     border-radius: 22px;
     outline: none;
     background-color: white;
-    color: #f27642;
+    color: $violet;
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
@@ -37,7 +46,7 @@
     background: transparent;
 
     &:hover {
-      background: $orange;
+      background: $violet;
       color: #fff;
     }
   }
