@@ -1,5 +1,4 @@
 @import '../../scss/variables';
-@import '../../scss/mixins';
 
 .header {
   border-bottom: 1px solid $gray-line;
@@ -65,26 +64,16 @@
     align-items: center;
     padding: 12px 25px;
     min-width: 100px;
-    background-color: $black;
     border: 1px solid transparent;
-    border-radius: 30px;
-    text-align: center;
-    cursor: pointer;
     color: #fff;
     line-height: 23px;
-    transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
-    @include noselect();
-
-    @media screen and (max-width: $mobile-1) {
-      padding: 10px 20px;
-    }
 
     &:hover {
-      background-color: lighten($black, 8%);
+      background-color: lighten($violet, 8%);
     }
 
     &:active {
-      background-color: lighten($black, 12%);
+      background-color: lighten($violet, 12%);
       transform: translateY(1px);
     }
 
@@ -105,7 +94,7 @@
       font-size: 16px;
       white-space: nowrap;
 
-      @media screen and (max-width: $mobile-2) {
+      @media screen and (max-width: $mobile-1) {
         font-size: 14px;
       }
     }

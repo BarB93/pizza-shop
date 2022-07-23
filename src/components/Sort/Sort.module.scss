@@ -20,8 +20,8 @@
     }
 
     span {
-      color: $orange;
-      border-bottom: 1px dashed $orange;
+      color: $violet;
+      border-bottom: 1px dashed $violet;
       cursor: pointer;
     }
   }
@@ -29,7 +29,7 @@
   &__icon {
     transform: rotateX(180deg);
     transform-origin: center;
-    transition: all .1s linear;
+    transition: all 0.1s linear;
 
     .open & {
       transform: rotateX(0);
@@ -40,7 +40,7 @@
     display: none;
     position: absolute;
     right: 0;
-    width: 160px;
+    width: 190px;
     margin-top: 15px;
     padding: 10px 0;
     background: #ffffff;
@@ -66,7 +66,7 @@
 
         &.active {
           font-weight: bold;
-          color: $orange;
+          color: $violet;
         }
       }
     }
