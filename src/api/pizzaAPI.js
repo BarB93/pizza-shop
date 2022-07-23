@@ -2,10 +2,15 @@ import { $host } from './index'
 
 const pizzaAPI = {
   async fetchPizzas(params) {
+    const category = params?.category
+    const sort = params?.sort
+    const search = params?.search
+
     const { data } = await $host.get('/', {
       params: {
-        ...(params?.category ? { category: params.category } : {}),
-        ...(params?.sort ? { sortBy: params.sort.value, orderBy: params.sort.type } : {}),
+        ...(search ? { title: search } : {}),
+        ...(category ? { category: params.category } : {}),
+        ...(sort ? { sortBy: params.sort.name, order: params.sort.order } : {}),
       },
     })
     return data
