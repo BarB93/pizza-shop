@@ -1,16 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
+import { setSortId } from '../../store/slices/sortSlice'
 import { sortItems } from '../../utils/consts'
-import { Context } from '../../App'
 
 import styles from './Sort.module.scss'
 
 const Sort = () => {
   const [isOpenPopup, setIsOpenPopup] = useState(false)
-  const { sortId, setSortId } = useContext(Context)
+  const sortId = useSelector(state => state.sort.sortId)
+  const dispatch = useDispatch()
 
   const selectSortItem = index => {
-    setSortId(index)
+    dispatch(setSortId(index))
     setIsOpenPopup(false)
   }
 
@@ -29,10 +31,10 @@ const Sort = () => {
       <div className={`${styles.sort__popup}`}>
         <ul>
           {sortItems.map((item, index) => (
-            <li key={item.value} className={`${sortId === index ? styles.active : ''}`} onClick={() => selectSortItem(index)}>
+            <li key={item.label} className={`${sortId === index ? styles.active : ''}`} onClick={() => selectSortItem(index)}>
               {item.label}
             </li>
-          ))} 
+          ))}
         </ul>
       </div>
     </div>
