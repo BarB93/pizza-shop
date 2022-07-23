@@ -7,21 +7,41 @@
   display: flex;
   align-items: center;
   height: 100%;
+  max-width: 400px;
   margin: 0 30px;
 
-  svg {
+  .searchIcon {
     position: absolute;
     left: 15px;
     width: 22px;
+
     & > * {
       stroke: $gray-light;
     }
   }
 
+  .closeIcon {
+    position: absolute;
+    width: 18px;
+    right: 15px;
+    cursor: pointer;
+    transition: all $duration ease-in-out;
+
+    &:hover {
+      path {
+        fill: $black;
+      }
+    }
+
+    path {
+      fill: $gray-light;
+    }
+  }
+
+  
   .input {
     width: 100%;
-    max-width: 400px;
-    padding: 12px 20px 12px 42px;
+    padding: 12px 42px;
     border-radius: 10px;
     border: 1px solid $gray-light;
     font-size: 16px;
