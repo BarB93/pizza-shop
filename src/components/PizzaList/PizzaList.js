@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
+import { Context } from '../../App'
 import pizzaAPI from '../../api/pizzaAPI'
 import PizzaItem from '../PizzaItem'
 import PizzaItemSkeleton from '../PizzaItem/PizzaItemSkeleton'
 
 import styles from './PizzaList.module.scss'
+import { sortItems } from '../../utils/consts'
 
 const PizzaList = () => {
   const [pizzas, setPizzas] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const { categoryId, sortId, search } = useContext(Context)
 
   useEffect(() => {
-    pizzaAPI
-      .fetchPizzas()
-      .then(pizzas => {
-        setPizzas(pizzas)
-        setIsLoading(false)
-      })
-      .catch(e => console.error('Error: ' + e.message))
-
     window.scrollTo(0, 0)
-  }, [])
+
+    setIsLoading(true)
+    pizzaAPI
+      .fetchPizzas({
+        category: categoryId,
+        sort: sortItems[sortId]?.value,
+        search
+      })
+      .then(pizzas => setPizzas(pizzas))
+      .catch(e => console.error('Error: ' + e.message))
+      .finally(() => setIsLoading(false))
+  }, [categoryId , sortId, search])
 
   return (
     <>

@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
+import { Context } from '../../App'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
 import styles from './Categories.module.scss'
 
 const Categories = () => {
-  const [activeCategory, setActiveCategory] = useState(4)
+  const { categoryId, setCategoryId } = useContext(Context)
 
   const categories = ['Все', 'Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'C грибами']
 
   return (
     <div className={styles.categories}>
       <div className={styles.list}>
-        <Swiper slidesPerView='auto' initialSlide={activeCategory}>
+        <Swiper slidesPerView='auto' initialSlide={categoryId}>
           {categories.map((category, index) => (
-            <SwiperSlide key={category} className={`${styles.slide} ${index === activeCategory ? styles.active : ''}`} onClick={() => setActiveCategory(index)}>
+            <SwiperSlide key={category} className={`${styles.slide} ${index === categoryId ? styles.active : ''}`} onClick={() => setCategoryId(index)}>
               {category}
             </SwiperSlide>
           ))}
