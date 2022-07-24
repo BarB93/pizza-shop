@@ -1,13 +1,16 @@
-import React, { useContext } from 'react'
-import { Context } from '../../App'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { setSearch } from '../../redux/slices/searchSlice'
 
 import styles from './Search.module.scss'
 
 const Search = () => {
-  const {search, setSearch} = useContext(Context)
+  const dispatch = useDispatch()
+  const search = useSelector(state => state.search.value)
 
   const searchChangeHandler = (e) => {
-    setSearch(e.target.value)
+    dispatch(setSearch(e.target.value))
   }
 
   return (

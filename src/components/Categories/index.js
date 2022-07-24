@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import {setCategoryId} from '../../store/slices/categorySlice'
+import {setCategoryId} from '../../redux/slices/categorySlice'
 
 import 'swiper/css'
 import 'swiper/css/pagination'

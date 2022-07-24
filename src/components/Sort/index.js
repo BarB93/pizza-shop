@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setSortId } from '../../store/slices/sortSlice'
+import { setSortId } from '../../redux/slices/sortSlice'
 import { sortItems } from '../../utils/consts'
 
 import styles from './Sort.module.scss'
