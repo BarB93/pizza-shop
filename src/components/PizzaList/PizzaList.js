@@ -52,7 +52,7 @@ const PizzaList = () => {
           <PizzaItem key={pizza.title} {...pizza} />
         ))}
         {isLoading && new Array(8).fill(0).map((_, index) => <PizzaItemSkeleton key={index} />)}
-        <div className={styles.lastElement} ref={lastElement}></div>
+        {!isLoading && <div className={styles.lastElement} ref={lastElement}></div>}
       </div>
     </>
   )
