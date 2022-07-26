@@ -17,7 +17,7 @@ const PizzaList = () => {
   const categoryId = useSelector(state => state.category.categoryId)
   const search = useSelector(state => state.search.value)
   const lastElement = useRef(null)
- 
+
   useIntersectionObserver({
     ref: lastElement,
     canLoad: currentPage <= totalCountPages,
@@ -38,8 +38,8 @@ const PizzaList = () => {
   })
 
   useEffect(() => {
-    dispatch(resetPizzas())
     window.scrollTo(0, 0)
+    dispatch(resetPizzas())
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryId, sortId, search])
