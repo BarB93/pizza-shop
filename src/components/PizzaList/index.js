@@ -28,6 +28,7 @@ const PizzaList = () => {
     threshold: 0,
   })
 
+  // function for set param to redux state
   const setParamToState = useCallback((name, value, params) => {
     switch (name) {
       case 'category':
@@ -49,7 +50,7 @@ const PizzaList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // if there are search params in url, parse them and add to state
+  // if there are search params in url, parse and add search params to redux state
   useEffect(() => {
     const search = params.toString()
 
@@ -84,20 +85,21 @@ const PizzaList = () => {
 
   // set query string in url from state values, ?category={categoryId}&title={search}&sortBy={sortItem.name}&order={sortItem.order}
   useEffect(() => {
-    window.scrollTo(0, 0)
-    dispatch(resetPizzas())
-    const sortItem = sortItems[sortId]?.value
+    if (isMounted.current) {
+      window.scrollTo(0, 0)
+      dispatch(resetPizzas())
+      const sortItem = sortItems[sortId]?.value
 
-    const queryString = qs.stringify({
-      ...(categoryId ? { category: categoryId } : {}),
-      ...(search ? { title: search } : {}),
-      ...(sortItem && sortItem.name && sortItem.order ? { sortBy: sortItem.name, order: sortItem.order } : {}),
-    })
+      const queryString = qs.stringify({
+        ...(categoryId ? { category: categoryId } : {}),
+        ...(search ? { title: search } : {}),
+        ...(sortItem && sortItem.name && sortItem.order ? { sortBy: sortItem.name, order: sortItem.order } : {}),
+      })
 
-    // if empty then clean query string
-    if (queryString) setParams(`?${queryString}`)
-    else setParams('')
-
+      // if empty then clean query string
+      if (queryString) setParams(`?${queryString}`)
+      else setParams('')
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryId, sortId, search])
 
@@ -109,6 +111,7 @@ const PizzaList = () => {
           <PizzaItem key={pizza.title} {...pizza} />
         ))}
         {isLoading && new Array(8).fill(0).map((_, index) => <PizzaItemSkeleton key={index} />)}
+        {/* last element for intersection observer */}
         {!isLoading && <div className={styles.lastElement} ref={lastElement}></div>}
       </div>
     </>
