@@ -1,19 +1,20 @@
 import React from 'react'
+import clsx from 'clsx'
 
 import styles from './PizzaItem.module.scss'
 
-const PizzaItemSkeleton = (props) => {
+const PizzaItemSkeleton = props => {
   return (
-    <div className={`${styles.wrapperPizzaBlock}`}>
-      <div className={`${styles.pizzaBlock}`}>
-        <div className={`${styles.pizzaBlockSkeleton__imageWrapper}`}>
-          <div className={`${styles.pizzaBlockSkeleton__image} skeleton`}></div>
+    <div className={styles.wrapperPizzaBlock}>
+      <div className={styles.pizzaBlock}>
+        <div className={styles.pizzaBlockSkeleton__imageWrapper}>
+          <div className={clsx('skeleton', styles.pizzaBlockSkeleton__image)}></div>
         </div>
-        <div className={`${styles.pizzaBlockSkeleton__info} ${styles.pizzaBlock__info} skeleton`}></div>
-        <div className={`${styles.pizzaBlockSkeleton__footer}`}>
-          <div  className={`${styles.pizzaBlockSkeleton__bottom}`}>
-              <div className={`${styles.pizzaBlockSkeleton__btn} skeleton`}></div>
-              <div className={`${styles.pizzaBlockSkeleton__price} skeleton`}></div>
+        <div className={clsx('skeleton', styles.pizzaBlockSkeleton__info, styles.pizzaBlock__info)}></div>
+        <div className={styles.pizzaBlockSkeleton__footer}>
+          <div className={styles.pizzaBlockSkeleton__bottom}>
+            <div className={clsx('skeleton', styles.pizzaBlockSkeleton__btn)}></div>
+            <div className={clsx('skeleton', styles.pizzaBlockSkeleton__price)}></div>
           </div>
         </div>
       </div>

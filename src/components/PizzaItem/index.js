@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
+import clsx from 'clsx'
+
 import Button from '../UI/Controls/Button'
 
 import styles from './PizzaItem.module.scss'
@@ -41,41 +43,41 @@ const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
 
   return (
     <div className={styles.wrapperPizzaBlock}>
-      <div className={`${styles.pizzaBlock} ${activePizza ? styles.active : ''}`}>
-        <img className={`${styles.pizzaBlock__image}`} src={imageUrl} alt={title} />
-        <div ref={$infoBlock} className={`${styles.pizzaBlock__info}`}>
-          <h4 ref={$title} className={`${styles.pizzaBlock__title}`}>
+      <div className={clsx(styles.pizzaBlock, activePizza && styles.active)}>
+        <img className={styles.pizzaBlock__image} src={imageUrl} alt={title} />
+        <div ref={$infoBlock} className={styles.pizzaBlock__info}>
+          <h4 ref={$title} className={styles.pizzaBlock__title}>
             {title}
           </h4>
-          <div ref={$description} className={`${styles.pizzaBlock__description}`}>
+          <div ref={$description} className={styles.pizzaBlock__description}>
             {desc}
           </div>
         </div>
-        <div className={`${styles.pizzaBlock__bottom}`}>
+        <div className={styles.pizzaBlock__bottom}>
           <Button type='select' onClick={() => setActivePizza(true)}>
             Выбрать
           </Button>
-          <span className={`${styles.pizzaBlock__price}`}>от {prices[0]} ₽</span>
+          <span className={styles.pizzaBlock__price}>от {prices[0]} ₽</span>
         </div>
-        <div className={`${styles.pizzaBlock__selector} ${styles.selector}`}>
-          <h4 className={`${styles.pizzaBlock__title}`}>{title}</h4>
-          <div className={`${styles.pizzaBlock__description}`}>{description}</div>
-          <ul className={`${styles.selector__sizes}`}>
+        <div className={clsx(styles.pizzaBlock__selector, styles.selector)}>
+          <h4 className={styles.pizzaBlock__title}>{title}</h4>
+          <div className={styles.pizzaBlock__description}>{description}</div>
+          <ul className={styles.selector__sizes}>
             {sizes.map((s, index) => (
-              <li key={s} className={`${styles.selector__size} ${activeSize === index ? styles.active : ''}`} onClick={() => setActiveSize(index)}>
+              <li key={s} className={clsx(styles.selector__size, activeSize === index && styles.active)} onClick={() => setActiveSize(index)}>
                 {s} см.
               </li>
             ))}
           </ul>
-          <ul className={`${styles.selector__types}`}>
+          <ul className={styles.selector__types}>
             {types.map(typeId => (
-              <li key={typeId} className={`${styles.selector__type} ${activeType === typeId ? styles.active : ''}`} onClick={() => setActiveType(typeId)}>
+              <li key={typeId} className={clsx(styles.selector__type, activeType === typeId && styles.active)} onClick={() => setActiveType(typeId)}>
                 {pizzaTypes[typeId]}
               </li>
             ))}
           </ul>
-          <div className={`${styles.selector__bottom}`}>
-            <button className={`${styles.selector__btn}`}>
+          <div className={styles.selector__bottom}>
+            <button className={styles.selector__btn}>
               <span>В корзину</span>
               <span>{prices[activeSize]} ₽</span>
             </button>

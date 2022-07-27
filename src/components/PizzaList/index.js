@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import qs from 'qs'
 import { useInView } from 'react-intersection-observer'
+import clsx from 'clsx'
 
 import { fetchPizzas } from '../../redux/slices/pizzaSlice/asyncThunks'
 import { setCategoryId } from '../../redux/slices/categorySlice'
@@ -103,7 +104,7 @@ const PizzaList = () => {
   return (
     <>
       <h2 className={styles.title}>Все пиццы</h2>
-      <div className={`${styles.list} ${pizzas.length > 0 ? styles.notEmpty : ''}`}>
+      <div className={clsx(styles.list, pizzas.length > 0 && styles.notEmpty)}>
         {pizzas.map(pizza => (
           <PizzaItem key={pizza.title} {...pizza} />
         ))}

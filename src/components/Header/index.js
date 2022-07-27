@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import clsx from 'clsx'
 
 import Search from '../Search'
 import Button from './../UI/Controls/Button/index'
@@ -10,7 +11,7 @@ import styles from './Header.module.scss'
 const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={`${styles.container} container`}>
+      <div className={clsx('container', styles.container)}>
         <div className={styles.header__logo}>
           <Link to='/'>
             <img className={styles.header__img} src={Logo} alt='Pizza logo' />

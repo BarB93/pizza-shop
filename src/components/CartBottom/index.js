@@ -7,8 +7,8 @@ import styles from './CartBottom.module.scss'
 
 const CartBottom = () => {
   return (
-    <div className={`${styles.bottom}`}>
-      <div className={`${styles.bottom__details}`}>
+    <div className={styles.bottom}>
+      <div className={styles.bottom__details}>
         <span>
           Всего пицц: <b>3 шт.</b>
         </span>
@@ -16,7 +16,7 @@ const CartBottom = () => {
           Сумма заказа: <b>900 ₽</b>
         </span>
       </div>
-      <div className={`${styles.bottom__buttons}`}>
+      <div className={styles.bottom__buttons}>
         <Link to='/' className='button button--outline button--add go-back-btn'>
           <Button className={styles.btnBack}>
             <svg width='8' height='14' viewBox='0 0 8 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
