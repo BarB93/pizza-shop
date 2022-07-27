@@ -29,10 +29,14 @@ const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
   useEffect(() => {
     window.addEventListener('resize', trimLengthDescription)
     return () => window.removeEventListener('resize', trimLengthDescription)
+
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
     trimLengthDescription()
+
+    // eslint-disable-next-line
   }, [desc])
 
   return (
@@ -48,7 +52,9 @@ const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
           </div>
         </div>
         <div className={`${styles.pizzaBlock__bottom}`}>
-          <Button type='select' onClick={() => setActivePizza(true)}>Выбрать</Button>
+          <Button type='select' onClick={() => setActivePizza(true)}>
+            Выбрать
+          </Button>
           <span className={`${styles.pizzaBlock__price}`}>от {prices[0]} ₽</span>
         </div>
         <div className={`${styles.pizzaBlock__selector} ${styles.selector}`}>
@@ -62,7 +68,7 @@ const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
             ))}
           </ul>
           <ul className={`${styles.selector__types}`}>
-            {types.map((typeId) => (
+            {types.map(typeId => (
               <li key={typeId} className={`${styles.selector__type} ${activeType === typeId ? styles.active : ''}`} onClick={() => setActiveType(typeId)}>
                 {pizzaTypes[typeId]}
               </li>

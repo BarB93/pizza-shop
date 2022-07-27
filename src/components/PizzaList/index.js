@@ -23,7 +23,7 @@ const PizzaList = () => {
   const search = useSelector(state => state.search.value)
   const [params, setParams] = useSearchParams()
   const isMounted = useRef(false)
-  const { ref:lastElement, inView} = useInView({
+  const { ref: lastElement, inView } = useInView({
     threshold: 0,
   })
 
@@ -48,14 +48,14 @@ const PizzaList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // if there are search params in url, parse them and add to state 
+  // if there are search params in url, parse them and add to state
   useEffect(() => {
     const search = params.toString()
 
     if (search) {
       const searchParsed = qs.parse(search.replace(/^\?/, ''))
 
-      for (let key in searchParsed) {
+      for (const key in searchParsed) {
         setParamToState(key, params.get(key), params)
       }
     }
@@ -77,7 +77,7 @@ const PizzaList = () => {
         }),
       )
     }
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, isMounted, pizzas])
 
