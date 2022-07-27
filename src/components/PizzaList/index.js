@@ -1,9 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
+import qs from 'qs'
+import { useInView } from 'react-intersection-observer'
 
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
-import { resetPizzas, setCurrentPage } from '../../redux/slices/pizzaSlice'
 import { fetchPizzas } from '../../redux/slices/pizzaSlice/asyncThunks'
+import { setCategoryId } from '../../redux/slices/categorySlice'
+import { resetPizzas } from '../../redux/slices/pizzaSlice'
+import { setSearch } from '../../redux/slices/searchSlice'
+import { setSortId } from '../../redux/slices/sortSlice'
 import { sortItems } from '../../utils/consts'
 import PizzaItem from '../PizzaItem'
 import PizzaItemSkeleton from '../PizzaItem/PizzaItemSkeleton'
@@ -16,15 +21,52 @@ const PizzaList = () => {
   const sortId = useSelector(state => state.sort.sortId)
   const categoryId = useSelector(state => state.category.categoryId)
   const search = useSelector(state => state.search.value)
-  const lastElement = useRef(null)
+  const [params, setParams] = useSearchParams()
+  const isMounted = useRef(false)
+  const { ref:lastElement, inView} = useInView({
+    threshold: 0,
+  })
 
-  useIntersectionObserver({
-    ref: lastElement,
-    canLoad: currentPage <= totalCountPages,
-    isLoading,
-    currentPage: currentPage,
-    callback: () => {
-      dispatch(setCurrentPage(currentPage))
+  const setParamToState = useCallback((name, value, params) => {
+    switch (name) {
+      case 'category':
+        dispatch(setCategoryId(Number(value)))
+        break
+      case 'search':
+        dispatch(setSearch(value))
+        break
+      case 'sortBy':
+        const order = params.get('order')
+        const sortIndex = sortItems.findIndex(el => el.value.name === value && el.value.order === order)
+        dispatch(setSortId(sortIndex))
+        break
+
+      default:
+        break
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // if there are search params in url, parse them and add to state 
+  useEffect(() => {
+    const search = params.toString()
+
+    if (search) {
+      const searchParsed = qs.parse(search.replace(/^\?/, ''))
+
+      for (let key in searchParsed) {
+        setParamToState(key, params.get(key), params)
+      }
+    }
+
+    isMounted.current = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // infinite loading/scroll, fetch pizzas when lastElement in view and others condition is true
+  useEffect(() => {
+    if (isMounted.current && inView && currentPage <= totalCountPages) {
       dispatch(
         fetchPizzas({
           category: categoryId,
@@ -34,12 +76,26 @@ const PizzaList = () => {
           currentPage,
         }),
       )
-    },
-  })
+    }
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, isMounted, pizzas])
 
+  // set query string in url from state values, ?category={categoryId}&title={search}&sortBy={sortItem.name}&order={sortItem.order}
   useEffect(() => {
     window.scrollTo(0, 0)
     dispatch(resetPizzas())
+    const sortItem = sortItems[sortId]?.value
+
+    const queryString = qs.stringify({
+      ...(categoryId ? { category: categoryId } : {}),
+      ...(search ? { title: search } : {}),
+      ...(sortItem && sortItem.name && sortItem.order ? { sortBy: sortItem.name, order: sortItem.order } : {}),
+    })
+
+    // if empty then clean query string
+    if (queryString) setParams(`?${queryString}`)
+    else setParams('')
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryId, sortId, search])
