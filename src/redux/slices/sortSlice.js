@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  sortId: 0,
+  sortId: 6,
 }
 
 export const sortSlice = createSlice({
