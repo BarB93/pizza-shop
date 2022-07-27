@@ -22,11 +22,11 @@
 }
 
 .lastElement {
-  position: absolute;
-  bottom: 0;
   height: 10px;
 
   .notEmpty & {
+    position: absolute;
+    bottom: 0;
     bottom: 320px;
   }
 }
