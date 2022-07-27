@@ -33,7 +33,7 @@ const PizzaList = () => {
       case 'category':
         dispatch(setCategoryId(Number(value)))
         break
-      case 'search':
+      case 'title':
         dispatch(setSearch(value))
         break
       case 'sortBy':
