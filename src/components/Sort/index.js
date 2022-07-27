@@ -1,24 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import clsx from 'clsx'
 
-import { setSortId } from '../../redux/slices/sortSlice'
+import { setIsOpenPopup, setSortId } from '../../redux/slices/sortSlice'
 import { sortItems } from '../../utils/consts'
 
 import styles from './Sort.module.scss'
 
 const Sort = () => {
-  const [isOpenPopup, setIsOpenPopup] = useState(false)
-  const sortId = useSelector(state => state.sort.sortId)
+  const { sortId, isOpenPopup } = useSelector(state => state.sort)
   const dispatch = useDispatch()
+  const sortRef = useRef(null)
 
   const selectSortItem = index => {
     dispatch(setSortId(index))
-    setIsOpenPopup(false)
+    dispatch(setIsOpenPopup(false))
   }
 
+  const closePopup = () => {
+    dispatch(setIsOpenPopup(false))
+  }
+
+  const togglePopup = () => {
+    dispatch(setIsOpenPopup(!isOpenPopup))
+  }
+
+  useEffect(() => {
+    const handler = e => {
+      if (!e.path.includes(sortRef.current) && isOpenPopup) {
+        closePopup()
+      }
+    }
+    window.addEventListener('click', handler)
+
+    return () => window.removeEventListener('click', handler)
+    // eslint-disable-next-line
+  }, [isOpenPopup])
+
   return (
-    <div className={clsx(styles.sort, isOpenPopup && styles.open)}>
+    <div ref={sortRef} className={clsx(styles.sort, isOpenPopup && styles.open)}>
       <div className={styles.sort__label}>
         <svg className={styles.sort__icon} width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <path
@@ -27,7 +47,7 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setIsOpenPopup(prev => !prev)}>{sortItems[sortId].label}</span>
+        <span onClick={() => togglePopup()}>{sortItems[sortId].label}</span>
       </div>
       <div className={styles.sort__popup}>
         <ul>
