@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import useDebounce from '../../hooks/useDebounce'
 
 import { setSearch } from '../../redux/slices/searchSlice'
@@ -8,8 +8,9 @@ import styles from './Search.module.scss'
 
 const Search = () => {
   const dispatch = useDispatch()
+  const search = useSelector(state => state.search.value)
   const searchInput = useRef(null)
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState(search)
   const debounceSearch = useDebounce(inputValue)
 
   const searchChangeHandler = e => {
@@ -26,6 +27,10 @@ const Search = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debounceSearch])
+
+  useEffect(() => {
+    setInputValue(search)
+  }, [search])
 
   return (
     <div className={styles.container}>
