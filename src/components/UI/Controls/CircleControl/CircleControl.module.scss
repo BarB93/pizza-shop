@@ -11,6 +11,24 @@
   cursor: pointer;
   background: #fff;
 
+  &:disabled {
+    border-color: $gray-light;
+    cursor: default;
+
+    &:hover {
+      background: transparent;
+      path {
+        fill: $gray-light;
+      }
+    } 
+    &:active {
+      transform: none;
+    }
+    path {
+      fill: $gray-light;
+    }
+  }
+
   &,
   path {
     transition: all 0.3s ease-in-out;
