@@ -1,20 +1,14 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
+
 .title {
   font-size: 35px;
 }
+
 .btn {
   margin-top: 20px;
-  padding: 10px 25px;
-  font-weight: bold;
-  border-radius: 22px;
-  background: #000;
-  color: #fff;
-  border: none;
-  transition: all .3s linear;
-
-  &:hover {
-    background: lighten(#000, 20%);
-  }
 }
