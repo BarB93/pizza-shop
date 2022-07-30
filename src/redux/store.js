@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { sortReducer, categoryReducer, pizzaReducer, searchReducer } from './slices'
+import { sortReducer, categoryReducer, pizzaReducer, searchReducer, cartReducer } from './slices'
 
 export const store = configureStore({
   reducer: {
@@ -7,5 +7,6 @@ export const store = configureStore({
     category: categoryReducer,
     pizza: pizzaReducer,
     search: searchReducer,
+    cart: cartReducer,
   },
 })
