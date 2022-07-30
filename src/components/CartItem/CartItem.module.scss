@@ -27,25 +27,33 @@
 
     h3 {
       font-weight: bold;
-      font-size: 22px;
+      font-size: 20px;
       line-height: 27px;
       letter-spacing: 0.01em;
     }
 
     p {
-      font-size: 18px;
+      font-size: 15px;
       color: #8d8d8d;
     }
   }
 
   &__count {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    min-width: 105px;
+  }
+
+  &__countBlock {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 13%;
+    width: 105px;
 
     b {
-      font-size: 22px;
+      font-size: 20px;
     }
   }
 
@@ -53,11 +61,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 33%;
+    width: 13%;
 
     b {
       font-weight: bold;
-      font-size: 22px;
+      font-size: 20px;
       letter-spacing: 0.01em;
     }
   }

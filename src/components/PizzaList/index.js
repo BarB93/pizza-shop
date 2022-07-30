@@ -108,7 +108,7 @@ const PizzaList = () => {
       <h2 className={styles.title}>Все пиццы</h2>
       <div className={clsx(styles.list, pizzas.length > 0 && styles.notEmpty)}>
         {pizzas.map(pizza => (
-          <PizzaItem key={pizza.title} {...pizza} />
+          <PizzaItem key={pizza.title} pizza={pizza} />
         ))}
         {isLoading && new Array(8).fill(0).map((_, index) => <PizzaItemSkeleton key={index} />)}
         {/* last element for intersection observer */}

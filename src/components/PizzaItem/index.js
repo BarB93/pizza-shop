@@ -1,19 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import clsx from 'clsx'
 
+import { addToOrder } from '../../redux/slices/cartSlice'
 import Button from '../UI/Controls/Button'
 
 import styles from './PizzaItem.module.scss'
 
-const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
+export const pizzaTypes = ['тонкое', 'традиционное']
+
+const PizzaItem = ({ pizza }) => {
+  const { title, description, prices, imageUrl, sizes, types } = pizza
+  const dispatch = useDispatch()
   const [activeType, setActiveType] = useState(types[0])
   const [activeSize, setActiveSize] = useState(0)
-  const [activePizza, setActivePizza] = useState(false)
+  const [isActivePizza, setIsActivePizza] = useState(false)
   const [desc, setDesc] = useState(description)
-  const pizzaTypes = ['тонкое', 'традиционное']
   const $infoBlock = useRef(null)
   const $title = useRef(null)
   const $description = useRef(null)
+
+  const cartItem = {
+    ...pizza,
+    typeIndex: activeType,
+    sizeIndex: activeSize,
+  }
 
   const trimLengthDescription = () => {
     if ($infoBlock.current && $title.current && $description.current) {
@@ -26,6 +37,10 @@ const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
         setDesc(result)
       }
     }
+  }
+
+  const addToOrderHandler = () => {
+    dispatch(addToOrder(cartItem))
   }
 
   useEffect(() => {
@@ -43,7 +58,7 @@ const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
 
   return (
     <div className={styles.wrapperPizzaBlock}>
-      <div className={clsx(styles.pizzaBlock, activePizza && styles.active)}>
+      <div className={clsx(styles.pizzaBlock, isActivePizza && styles.active)}>
         <img className={styles.pizzaBlock__image} src={imageUrl} alt={title} />
         <div ref={$infoBlock} className={styles.pizzaBlock__info}>
           <h4 ref={$title} className={styles.pizzaBlock__title}>
@@ -54,7 +69,7 @@ const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
           </div>
         </div>
         <div className={styles.pizzaBlock__bottom}>
-          <Button type='select' onClick={() => setActivePizza(true)}>
+          <Button type='select' onClick={() => setIsActivePizza(true)}>
             Выбрать
           </Button>
           <span className={styles.pizzaBlock__price}>от {prices[0]} ₽</span>
@@ -77,7 +92,7 @@ const PizzaItem = ({ title, prices, imageUrl, sizes, types, description }) => {
             ))}
           </ul>
           <div className={styles.selector__bottom}>
-            <button className={styles.selector__btn}>
+            <button className={styles.selector__btn} onClick={addToOrderHandler}>
               <span>В корзину</span>
               <span>{prices[activeSize]} ₽</span>
             </button>

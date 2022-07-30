@@ -9,11 +9,27 @@
 
     span {
       font-size: 22px;
+    }
+  }
 
-      &:last-of-type {
-        b {
-          color: $violet;
-        }
+  &__detailsLeft {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 15px;
+      color: $gray;
+    }
+  }
+
+  &__detailsRight {
+    align-self: flex-end;
+
+    span {
+      color: $gray;
+
+      b {
+        color: $violet;
       }
     }
   }
@@ -24,21 +40,6 @@
     margin-top: 40px;
 
     .btnBack {
-      border: 1px solid darken($color: $gray-line, $amount: 10);
-      border-color: darken($color: $gray-line, $amount: 10);
-      background: transparent;
-      color: darken($color: $gray-line, $amount: 20);
-
-      &:hover {
-        background: #000;
-        color: #fff;
-        svg {
-          path {
-            stroke: #fff;
-          }
-        }
-      }
-
       svg {
         margin-right: 12px;
         path {

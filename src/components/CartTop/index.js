@@ -1,7 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
+import { clearOrder } from '../../redux/slices/cartSlice'
 import styles from './CartTop.module.scss'
 
 const CartTop = () => {
+  const dispatch = useDispatch()
+
+  const clearCartHandler = () => {
+    if(window.confirm('Вы действительно хотите очистить корзину?')) {
+      dispatch(clearOrder())
+    }
+  }
+
   return (
     <div className={styles.top}>
       <h2 className={styles.title}>
@@ -18,7 +29,7 @@ const CartTop = () => {
         </svg>
         Корзина
       </h2>
-      <div className={styles.clear}>
+      <div className={styles.clear} onClick={clearCartHandler}>
         <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <path d='M2.5 5H4.16667H17.5' stroke='#B6B6B6' strokeWidth='1.2' strokeLinecap='round' strokeLinejoin='round' />
           <path
