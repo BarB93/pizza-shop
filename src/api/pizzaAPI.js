@@ -8,7 +8,7 @@ const pizzaAPI = {
     const limit = params?.limit
     const currentPage = params?.currentPage
 
-    const { data } = await $host.get('/', {
+    const { data } = await $host.get('/pizzas', {
       params: {
         ...(search ? { title: search } : {}),
         ...(category ? { category: params.category } : {}),
