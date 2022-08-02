@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import clsx from 'clsx'
 
+import { routes } from '../../utils/consts'
 import { useAppSelector } from '../../hooks'
 import Search from '../Search'
 import Button from './../UI/Controls/Button/index'
@@ -11,7 +12,8 @@ import styles from './Header.module.scss'
 
 const Header = () => {
   const { totalCount, totalPrice } = useAppSelector(state => state.cart)
-
+  const {pathname} = useLocation()
+  
   return (
     <header className={styles.header}>
       <div className={clsx('container', styles.container)}>
@@ -26,7 +28,7 @@ const Header = () => {
             <p>сделаем вкусно и доставим быстро</p>
           </div>
         </div>
-        <Search />
+        {pathname === routes.HOME_ROUTE && <Search />}
         <div className={styles.cart}>
           <Link to='/cart'>
             <Button className={styles.button}>
