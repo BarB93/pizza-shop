@@ -6,15 +6,15 @@ import styles from './PizzaItem.module.scss'
 const PizzaItemSkeleton: React.FC = () => {
   return (
     <div className={styles.wrapperPizzaBlock}>
-      <div className={styles.pizzaBlock}>
-        <div className={styles.pizzaBlockSkeleton__imageWrapper}>
-          <div className={clsx('skeleton', styles.pizzaBlockSkeleton__image)}></div>
+      <div className={clsx(styles.pizzaBlock, styles.skeleton)}>
+        <div className={styles.skeletonWrapper}>
+          <div className={clsx('skeleton', styles.skeletonImage)}></div>
         </div>
-        <div className={clsx('skeleton', styles.pizzaBlockSkeleton__info, styles.pizzaBlock__info)}></div>
-        <div className={styles.pizzaBlockSkeleton__footer}>
-          <div className={styles.pizzaBlockSkeleton__bottom}>
-            <div className={clsx('skeleton', styles.pizzaBlockSkeleton__btn)}></div>
-            <div className={clsx('skeleton', styles.pizzaBlockSkeleton__price)}></div>
+        <div className={clsx('skeleton', styles.skeletonInfo, styles.info)}></div>
+        <div className={styles.skeletonFooter}>
+          <div className={styles.skeletonBottom}>
+            <div className={clsx('skeleton', styles.skeletonBtn)}></div>
+            <div className={clsx('skeleton', styles.skeletonPrice)}></div>
           </div>
         </div>
       </div>

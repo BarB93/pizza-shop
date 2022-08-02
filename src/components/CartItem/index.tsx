@@ -24,27 +24,27 @@ const CartItem: React.FC<OrderItem> = ({ id, title, typeIndex, sizes, sizeIndex,
 
   return (
     <div className={styles.item}>
-      <div className={styles.item__image}>
+      <div className={styles.image}>
         <img src='https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg' alt='Pizza' />
       </div>
-      <div className={styles.item__info}>
+      <div className={styles.info}>
         <h3>{title}</h3>
         <p>
           {pizzaTypes[typeIndex]} тесто, {sizes[sizeIndex]} см.
         </p>
         <p>{pricePrettify(weights[sizeIndex] * quantity)} гр.</p>
       </div>
-      <div className={styles.item__count}>
-        <div className={styles.item__countBlock}>
+      <div className={styles.count}>
+        <div className={styles.countBlock}>
           <CircleControl minus onClick={decrementHandler} disabled={quantity === 1} />
           <b>{quantity}</b>
           <CircleControl plus onClick={incrementHandler} />
         </div>
       </div>
-      <div className={styles.item__price}>
+      <div className={styles.price}>
         <b>{pricePrettify(prices[sizeIndex] * quantity)} ₽</b>
       </div>
-      <div className={styles.item__remove}>
+      <div className={styles.remove}>
         <CircleControl remove onClick={removeItemHandler} />
       </div>
     </div>

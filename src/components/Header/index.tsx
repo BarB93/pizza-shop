@@ -15,9 +15,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={clsx('container', styles.container)}>
-        <div className={styles.header__logo}>
+        <div className={styles.logo}>
           <Link to='/'>
-            <img className={styles.header__img} src={Logo} alt='Pizza logo' />
+            <img className={styles.img} src={Logo} alt='Pizza logo' />
           </Link>
           <div>
             <Link to='/'>
@@ -27,11 +27,11 @@ const Header = () => {
           </div>
         </div>
         <Search />
-        <div className={styles.header__cart}>
+        <div className={styles.cart}>
           <Link to='/cart'>
             <Button className={styles.button}>
               <span>{totalPrice} ₽</span>
-              <div className={styles.button__delimiter}></div>
+              <div className={styles.delimiter}></div>
               <svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'>
                 <path d='M6.33333 16.3333C7.06971 16.3333 7.66667 15.7364 7.66667 15C7.66667 14.2636 7.06971 13.6667 6.33333 13.6667C5.59695 13.6667 5 14.2636 5 15C5 15.7364 5.59695 16.3333 6.33333 16.3333Z' stroke='white' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />
                 <path d='M14.3333 16.3333C15.0697 16.3333 15.6667 15.7364 15.6667 15C15.6667 14.2636 15.0697 13.6667 14.3333 13.6667C13.597 13.6667 13 14.2636 13 15C13 15.7364 13.597 16.3333 14.3333 16.3333Z' stroke='white' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />

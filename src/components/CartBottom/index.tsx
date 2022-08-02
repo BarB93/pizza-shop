@@ -12,8 +12,8 @@ const CartBottom: React.FC = () => {
 
   return (
     <div className={styles.bottom}>
-      <div className={styles.bottom__details}>
-        <div className={styles.bottom__detailsLeft}>
+      <div className={styles.details}>
+        <div className={styles.detailsLeft}>
           <span>
             Всего пицц: <b>{pricePrettify(totalCount)} шт.</b>
           </span>
@@ -21,13 +21,13 @@ const CartBottom: React.FC = () => {
             Общий вес: <b>{pricePrettify(totalWeight)} гр.</b>
           </span>
         </div>
-        <div className={styles.bottom__detailsRight}>
+        <div className={styles.detailsRight}>
           <span>
             Сумма заказа: <b>{pricePrettify(totalPrice)} ₽</b>
           </span>
         </div>
       </div>
-      <div className={styles.bottom__buttons}>
+      <div className={styles.buttons}>
         <Link to='/' className='button button--outline button--add go-back-btn'>
           <Button className={styles.btnBack} type='transparent'>
             <svg width='8' height='14' viewBox='0 0 8 14' fill='none' xmlns='http://www.w3.org/2000/svg'>

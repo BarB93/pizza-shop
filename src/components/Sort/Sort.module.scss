@@ -2,7 +2,7 @@
 
 .sort {
   position: relative;
-  &__label {
+  .label {
     display: flex;
     align-items: center;
     white-space: nowrap;
@@ -26,17 +26,16 @@
     }
   }
 
-  &__icon {
+  .icon {
     transform: rotateX(180deg);
     transform-origin: center;
     transition: all 0.1s linear;
-
-    .open & {
-      transform: rotateX(0);
-    }
+  }
+  &.open .icon {
+    transform: rotateX(0);
   }
 
-  &__popup {
+  .popup {
     display: none;
     position: absolute;
     right: 0;
@@ -48,10 +47,6 @@
     border-radius: 10px;
     overflow: hidden;
     z-index: 5;
-
-    .open & {
-      display: block;
-    }
 
     ul {
       overflow: hidden;
@@ -70,5 +65,8 @@
         }
       }
     }
+  }
+  &.open .popup {
+    display: block;
   }
 }

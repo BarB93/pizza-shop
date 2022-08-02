@@ -3,7 +3,7 @@
 .bottom {
   margin: 50px 0;
 
-  &__details {
+  .details {
     display: flex;
     justify-content: space-between;
 
@@ -12,7 +12,7 @@
     }
   }
 
-  &__detailsLeft {
+  .detailsLeft {
     display: flex;
     flex-direction: column;
 
@@ -22,7 +22,7 @@
     }
   }
 
-  &__detailsRight {
+  .detailsRight {
     align-self: flex-end;
 
     span {
@@ -34,7 +34,7 @@
     }
   }
 
-  &__buttons {
+  .buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;

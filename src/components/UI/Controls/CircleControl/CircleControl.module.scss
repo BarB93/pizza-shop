@@ -20,7 +20,7 @@
       path {
         fill: $gray-light;
       }
-    } 
+    }
     &:active {
       transform: none;
     }
@@ -49,35 +49,35 @@
   &:active {
     transform: translateY(3px);
   }
+}
 
-  &_minus {
-    svg {
-      path:first-of-type {
-        display: none;
-      }
+.minus {
+  svg {
+    path:first-of-type {
+      display: none;
     }
   }
+}
 
-  &_remove {
-    border-color: darken($color: $gray-line, $amount: 10);
+.remove {
+  border-color: darken($color: $gray-line, $amount: 10);
 
-    &:hover {
-      background: #000;
-      svg {
-        transform: rotate(45deg);
-
-        path {
-          fill: #fff;
-        }
-      }
-    }
-
+  &:hover {
+    background: #000;
     svg {
       transform: rotate(45deg);
 
       path {
-        fill: darken($color: $gray-line, $amount: 10);
+        fill: #fff;
       }
+    }
+  }
+
+  svg {
+    transform: rotate(45deg);
+
+    path {
+      fill: darken($color: $gray-line, $amount: 10);
     }
   }
 }

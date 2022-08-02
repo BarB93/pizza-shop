@@ -66,40 +66,40 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza }) => {
   return (
     <div className={styles.wrapperPizzaBlock}>
       <div className={clsx(styles.pizzaBlock, isActivePizza && styles.active)}>
-        <img className={styles.pizzaBlock__image} src={imageUrl} alt={title} />
-        <div ref={$infoBlock} className={styles.pizzaBlock__info}>
-          <h4 ref={$title} className={styles.pizzaBlock__title}>
+        <img className={styles.image} src={imageUrl} alt={title} />
+        <div ref={$infoBlock} className={styles.info}>
+          <h4 ref={$title} className={styles.title}>
             {title}
           </h4>
-          <div ref={$description} className={styles.pizzaBlock__description}>
+          <div ref={$description} className={styles.description}>
             {desc}
           </div>
         </div>
-        <div className={styles.pizzaBlock__bottom}>
+        <div className={styles.bottom}>
           <Button type='select' onClick={() => setIsActivePizza(true)}>
             Выбрать
           </Button>
-          <span className={styles.pizzaBlock__price}>от {prices[0]} ₽</span>
+          <span className={styles.price}>от {prices[0]} ₽</span>
         </div>
-        <div className={clsx(styles.pizzaBlock__selector, styles.selector)}>
-          <h4 className={styles.pizzaBlock__title}>{title}</h4>
-          <div className={styles.pizzaBlock__description}>{description}</div>
-          <ul className={styles.selector__sizes}>
+        <div className={clsx(styles.selector)}>
+          <h4 className={styles.title}>{title}</h4>
+          <div className={styles.description}>{description}</div>
+          <ul className={styles.sizes}>
             {sizes.map((s, index) => (
-              <li key={s} className={clsx(styles.selector__size, activeSize === index && styles.active)} onClick={() => setActiveSize(index)}>
+              <li key={s} className={clsx(styles.size, activeSize === index && styles.active)} onClick={() => setActiveSize(index)}>
                 {s} см.
               </li>
             ))}
           </ul>
-          <ul className={styles.selector__types}>
+          <ul className={styles.types}>
             {types.map(typeId => (
-              <li key={typeId} className={clsx(styles.selector__type, activeType === typeId && styles.active)} onClick={() => setActiveType(typeId)}>
+              <li key={typeId} className={clsx(styles.type, activeType === typeId && styles.active)} onClick={() => setActiveType(typeId)}>
                 {pizzaTypes[typeId]}
               </li>
             ))}
           </ul>
-          <div className={styles.selector__bottom}>
-            <button className={styles.selector__btn} onClick={addToOrderHandler}>
+          <div className={styles.bottom}>
+            <button className={styles.btn} onClick={addToOrderHandler}>
               <span>В корзину</span>
               <span>{prices[activeSize]} ₽</span>
             </button>

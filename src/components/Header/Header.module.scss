@@ -14,7 +14,7 @@
     justify-content: space-between;
   }
 
-  &__logo {
+  .logo {
     display: flex;
     margin-right: 20px;
     
@@ -99,7 +99,7 @@
       }
     }
 
-    &__delimiter {
+    .delimiter {
       width: 1px;
       height: 25px;
       background-color: rgba(255, 255, 255, 0.25);
