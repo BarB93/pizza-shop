@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
+import { routes } from './utils/consts'
 import { store } from './redux/store'
 import Header from './components/Header'
 import Cart from './pages/Cart'
@@ -16,8 +17,8 @@ function App() {
         <Header />
         <div className='content'>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/cart' element={<Cart />} />
+            <Route path={routes.HOME_ROUTE} element={<Home />} />
+            <Route path={routes.CART_ROUTE} element={<Cart />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </div>
