@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import cartEmpty from '../../assets/img/cart-empty.svg'
 import Button from '../UI/Controls/Button'
+
+import cartEmpty from '../../assets/img/cart-empty.svg'
 import styles from './CartEmpty.module.scss'
 
 const CartEmpty: React.FC = () => {

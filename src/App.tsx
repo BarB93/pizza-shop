@@ -1,13 +1,12 @@
 import React, { Suspense, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
+import useAppDispatch from './hooks/useAppDispatch'
 import { OrderItem } from './redux/slices/cart/types'
 import { setOrder } from './redux/slices/cart/slice'
 import { ORDER_NAME_IN_LOCAL_STORAGE, routes } from './utils/consts'
-import useAppDispatch from './hooks/useAppDispatch'
-import Header from './components/Header'
-import LoaderCircle from './components/UI/Loaders/index'
 
+import { Header, LoaderCircle } from './components'
 import Home from './pages/Home'
 
 import './scss/app.scss'

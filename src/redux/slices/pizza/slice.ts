@@ -3,6 +3,8 @@ import { fetchPizzas } from './asyncActions'
 import { PizzaSliceState } from './types'
 import { Status } from './types'
 
+export const pizzaTypes: string[] = ['тонкое', 'традиционное']
+
 const initialState: PizzaSliceState = {
   pizzas: [],
   status: Status.COMPLITED,

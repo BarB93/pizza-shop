@@ -5,11 +5,10 @@ import clsx from 'clsx'
 import { OrderItem } from '../../redux/slices/cart/types'
 import { Pizza } from '../../redux/slices/pizza/types'
 import { addToOrder} from '../../redux/slices/cart/slice'
+import { pizzaTypes } from '../../redux/slices/pizza/slice'
 import Button from '../UI/Controls/Button'
 
 import styles from './PizzaItem.module.scss'
-
-export const pizzaTypes: string[] = ['тонкое', 'традиционное']
 
 type PizzaItemProps = {
   pizza: Pizza

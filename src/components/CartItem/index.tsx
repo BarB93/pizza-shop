@@ -1,14 +1,14 @@
 import React from 'react'
 import { decrement, increment, removeFromOrder } from '../../redux/slices/cart/slice'
 
+import { pizzaTypes } from '../../redux/slices/pizza/slice'
 import pricePrettify from './../../utils/pricePrettify'
+import { OrderItem } from '../../redux/slices/cart/types'
 import { useAppDispatch } from '../../hooks'
-import { pizzaTypes } from '../PizzaItem'
 
 import CircleControl from '../UI/Controls/CircleControl'
 
 import styles from './CartItem.module.scss'
-import { OrderItem } from '../../redux/slices/cart/types'
 
 const CartItem: React.FC<OrderItem> = ({ id, title, typeIndex, sizes, sizeIndex, prices, quantity, weights }) => {
   const dispatch = useAppDispatch()
