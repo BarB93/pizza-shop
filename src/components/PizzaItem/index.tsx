@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import clsx from 'clsx'
 
-import { OrderItem } from '../../redux/slices/cartSlice/types'
-import { Pizza } from '../../redux/slices/pizzaSlice/types'
-import { addToOrder} from '../../redux/slices/cartSlice'
+import { OrderItem } from '../../redux/slices/cart/types'
+import { Pizza } from '../../redux/slices/pizza/types'
+import { addToOrder} from '../../redux/slices/cart/slice'
 import Button from '../UI/Controls/Button'
 
 import styles from './PizzaItem.module.scss'

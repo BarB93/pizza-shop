@@ -1,4 +1,4 @@
-import { Pizza, PizzasFetchParams } from '../redux/slices/pizzaSlice/types'
+import { Pizza, PizzasFetchParams } from '../redux/slices/pizza/types'
 import { $host } from './index'
 
 const pizzaAPI = {

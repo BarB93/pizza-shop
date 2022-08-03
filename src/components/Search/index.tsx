@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector, useDebounce } from '../../hooks'
 
-import { setSearch } from '../../redux/slices/searchSlice/searchSlice'
+import { setSearch } from '../../redux/slices/search/slice'
 
 import styles from './Search.module.scss'
 

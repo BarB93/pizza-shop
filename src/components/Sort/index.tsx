@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import clsx from 'clsx'
 
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { setIsOpenPopup, setSortId, sortItems } from '../../redux/slices/sortSlice'
+import { setIsOpenPopup, setSortId, sortItems } from '../../redux/slices/sort/slice'
 
 import styles from './Sort.module.scss'
 

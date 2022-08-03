@@ -1,4 +1,4 @@
-import { Pizza } from "../pizzaSlice/types"
+import { Pizza } from "../pizza/types"
 
 export type OrderItem = Pizza & {
   typeIndex: number

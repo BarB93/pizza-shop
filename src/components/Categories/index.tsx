@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import clsx from 'clsx'
 
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { setCategoryId } from '../../redux/slices/categorySlice'
+import { setCategoryId } from '../../redux/slices/category/slice'
 
 import 'swiper/css'
 import 'swiper/css/pagination'

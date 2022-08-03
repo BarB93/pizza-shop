@@ -1,5 +1,5 @@
 import React from 'react'
-import { decrement, increment, removeFromOrder } from '../../redux/slices/cartSlice'
+import { decrement, increment, removeFromOrder } from '../../redux/slices/cart/slice'
 
 import pricePrettify from './../../utils/pricePrettify'
 import { useAppDispatch } from '../../hooks'
@@ -8,7 +8,7 @@ import { pizzaTypes } from '../PizzaItem'
 import CircleControl from '../UI/Controls/CircleControl'
 
 import styles from './CartItem.module.scss'
-import { OrderItem } from '../../redux/slices/cartSlice/types'
+import { OrderItem } from '../../redux/slices/cart/types'
 
 const CartItem: React.FC<OrderItem> = ({ id, title, typeIndex, sizes, sizeIndex, prices, quantity, weights }) => {
   const dispatch = useAppDispatch()

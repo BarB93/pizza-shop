@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { CartItemType, CartSliceState, OrderItem } from './types'
+import { ORDER_NAME_IN_LOCAL_STORAGE } from '../../../utils/consts'
 
 const initialState: CartSliceState = {
   order: [],
@@ -12,6 +13,10 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    setOrder: (state, action: PayloadAction<OrderItem[]>) => {
+      state.order = action.payload
+      calculationOrderValues(state)
+    },
     addToOrder: (state, action: PayloadAction<OrderItem>) => {
       const addPizza = action.payload
       // check there are already pizza in cart with same id, size and type
@@ -22,27 +27,32 @@ const cartSlice = createSlice({
         state.order[index].quantity++
       }
       calculationOrderValues(state)
+      saveOrderToLocalStorage(state.order)
     },
     removeFromOrder: (state, action: PayloadAction<CartItemType>) => {
       const index = state.order.findIndex(item => item.id === action.payload.id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
       state.order.splice(index, 1)
       calculationOrderValues(state)
+      saveOrderToLocalStorage(state.order)
     },
     clearOrder: state => {
       state.order = []
       state.totalCount = 0
       state.totalPrice = 0
       state.totalWeight = 0
+      saveOrderToLocalStorage(state.order)
     },
     increment: (state, action: PayloadAction<CartItemType>) => {
       const index = state.order.findIndex(item => item.id === action.payload.id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
       state.order[index].quantity++
       calculationOrderValues(state)
+      saveOrderToLocalStorage(state.order)
     },
     decrement: (state, action: PayloadAction<CartItemType>) => {
       const index = state.order.findIndex(item => item.id === action.payload.id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
       state.order[index].quantity > 1 && state.order[index].quantity--
       calculationOrderValues(state)
+      saveOrderToLocalStorage(state.order)
     },
   },
 })
@@ -64,6 +74,13 @@ function calculationOrderValues(state: CartSliceState) {
   state.totalWeight = totalWeight
 }
 
-export const { addToOrder, removeFromOrder, clearOrder, increment, decrement } = cartSlice.actions
+function saveOrderToLocalStorage(value: OrderItem[]) {
+  if (typeof window !== 'undefined') {
+    const str = JSON.stringify(value)
+    window.localStorage.setItem(ORDER_NAME_IN_LOCAL_STORAGE, str)
+  }
+}
+
+export const { setOrder, addToOrder, removeFromOrder, clearOrder, increment, decrement } = cartSlice.actions
 
 export default cartSlice.reducer

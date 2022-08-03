@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAppDispatch } from '../../hooks'
 
-import { clearOrder } from '../../redux/slices/cartSlice'
+import { clearOrder } from '../../redux/slices/cart/slice'
 import styles from './CartTop.module.scss'
 
 const CartTop: React.FC = () => {

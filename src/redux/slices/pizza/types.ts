@@ -1,4 +1,4 @@
-import { SortItemValue } from "../sortSlice/types"
+import { SortItemValue } from "../sort/types"
 
 export enum Status {
   LOADING = 'loading',
