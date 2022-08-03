@@ -6,13 +6,14 @@ import { setOrder } from './redux/slices/cart/slice'
 import { ORDER_NAME_IN_LOCAL_STORAGE, routes } from './utils/consts'
 import useAppDispatch from './hooks/useAppDispatch'
 import Header from './components/Header'
-// import Cart from './pages/Cart'
+import LoaderCircle from './components/UI/Loaders/index'
 
 import Home from './pages/Home'
-import NotFound from './pages/NotFound/NotFound'
 
 import './scss/app.scss'
-const Cart = React.lazy(() => import('./pages/Cart'))
+
+const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'))
+const NotFound = React.lazy(() => import(/* webpackChunkName: "NotFound" */ './pages/NotFound'))
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -34,11 +35,13 @@ const App: React.FC = () => {
     <div className='wrapper'>
       <Header />
       <div className='content'>
-        <Routes>
-          <Route path={routes.HOME_ROUTE} element={<Home />} />
-          <Route path={routes.CART_ROUTE} element={<Suspense><Cart /></Suspense>} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<LoaderCircle />}>
+          <Routes>
+            <Route path={routes.HOME_ROUTE} element={<Home />} />
+            <Route path={routes.CART_ROUTE} element={<Cart />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </div>
     </div>
   )
