@@ -7,7 +7,7 @@
   @media screen and (max-width: $desktop-3) {
     padding: 25px 0;
   }
-  
+
   @media screen and (max-width: $tablet-1) {
     padding: 20px 0;
   }
@@ -75,7 +75,6 @@
   .button {
     display: flex;
     align-items: center;
-    padding: 12px 25px;
     min-width: 100px;
     border: 1px solid transparent;
     color: #fff;
@@ -100,6 +99,11 @@
     svg {
       margin-right: 8px;
       margin-bottom: 1px;
+
+      @media screen and (max-width: $mobile-1) {
+        width: 15px;
+        height: 15px;
+      }
     }
 
     span {

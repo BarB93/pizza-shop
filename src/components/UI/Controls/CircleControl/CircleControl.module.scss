@@ -11,6 +11,11 @@
   cursor: pointer;
   background: #fff;
 
+  @media screen and (max-width: $tablet-3) {
+    width: 24px;
+    height: 24px;
+  }
+
   &:disabled {
     border-color: $gray-light;
     cursor: default;

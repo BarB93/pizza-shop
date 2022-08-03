@@ -1,8 +1,12 @@
-@import "../../scss/variables";
-@import "../../scss/mixins";
+@import '../../scss/variables';
+@import '../../scss/mixins';
 
 .container {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 20px;
+
+  @media screen and (max-width: $mobile-4) {
+    padding: 0 15px;
+  }
 }
