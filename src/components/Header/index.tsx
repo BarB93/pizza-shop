@@ -12,8 +12,8 @@ import styles from './Header.module.scss'
 
 const Header = () => {
   const { totalCount, totalPrice } = useAppSelector(state => state.cart)
-  const {pathname} = useLocation()
-  
+  const { pathname } = useLocation()
+
   return (
     <header className={styles.header}>
       <div className={clsx('container', styles.container)}>
@@ -28,7 +28,11 @@ const Header = () => {
             <p>сделаем вкусно и доставим быстро</p>
           </div>
         </div>
-        {pathname === routes.HOME_ROUTE && <Search />}
+        {pathname === routes.HOME_ROUTE && (
+          <div className={styles.search}>
+            <Search />
+          </div>
+        )}
         <div className={styles.cart}>
           <Link to='/cart'>
             <Button className={styles.button}>

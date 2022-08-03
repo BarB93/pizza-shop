@@ -11,3 +11,9 @@
     justify-content: center;
   }
 }
+
+.search {
+  @media screen and (min-width: $desktop-3) {
+    display: none;
+  }
+}

@@ -2,13 +2,21 @@
 
 .container {
   position: relative;
-  flex: 1 1 auto;
-  align-self: center;
   display: flex;
   align-items: center;
   height: 100%;
   max-width: 400px;
   margin: 0 30px;
+
+  @media screen and (max-width: $desktop-3) {
+    max-width: none;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: $mobile-1) {
+    max-width: none;
+    margin: 0 15px 30px;
+  }
 
   .searchIcon {
     position: absolute;
@@ -38,7 +46,6 @@
     }
   }
 
-  
   .input {
     width: 100%;
     padding: 12px 42px;
