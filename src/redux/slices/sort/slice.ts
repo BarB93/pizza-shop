@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { SortItem, SortName, SortOrder, SortSliceState } from './types'
+import { DEFAULT_SORT_ID } from './../../../utils/consts'
 
 export const sortItems: SortItem[] = [
   { value: { name: SortName.RATING, order: SortOrder.DESC }, label: 'популярности max' },
@@ -12,7 +13,7 @@ export const sortItems: SortItem[] = [
 ]
 
 const initialState: SortSliceState = {
-  sortId: 6,
+  sortId: DEFAULT_SORT_ID,
   isOpenPopup: false,
 }
 export const sortSlice = createSlice({

@@ -16,6 +16,7 @@ import PizzaItem from '../PizzaItem'
 import PizzaItemSkeleton from '../PizzaItem/PizzaItemSkeleton'
 
 import styles from './PizzaList.module.scss'
+import PizzaEmpty from '../PizzaEmpty/PizzaEmpty'
 
 const PizzaList: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -25,7 +26,7 @@ const PizzaList: React.FC = () => {
   const search = useAppSelector(state => state.search.value)
   const [params, setParams] = useSearchParams()
   const isMounted = useRef<boolean>(false)
-  // library for IntersectionObserverAPI 
+  // library for IntersectionObserverAPI
   const { ref: lastElement, inView } = useInView({
     threshold: 0,
   })
@@ -120,6 +121,7 @@ const PizzaList: React.FC = () => {
         {status === Status.LOADING && new Array(8).fill(0).map((_, index) => <PizzaItemSkeleton key={index} />)}
         {/* last element for intersection observer */}
         {status === Status.COMPLITED && <div className={styles.lastElement} ref={lastElement}></div>}
+        {pizzas.length === 0 && status === Status.COMPLITED && <PizzaEmpty />}
       </div>
     </>
   )

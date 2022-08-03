@@ -4,3 +4,6 @@ export enum routes {
 }
 
 export const ORDER_NAME_IN_LOCAL_STORAGE = 'pizza_shop_order'
+
+export const DEFAULT_SORT_ID = 6
+export const DEFAULT_CATEGORY_ID = 0
