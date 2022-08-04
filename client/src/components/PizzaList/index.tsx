@@ -121,6 +121,7 @@ const PizzaList: React.FC = () => {
         {status === Status.LOADING && new Array(8).fill(0).map((_, index) => <PizzaItemSkeleton key={index} />)}
         {/* last element for intersection observer */}
         {status === Status.COMPLITED && <div className={styles.lastElement} ref={lastElement}></div>}
+        {/* TODO barb: когда сделаю сервер, проверку дулать по возвражаемым данным с сервера, а имменно кол-во пицц */}
         {pizzas.length === 0 && status === Status.COMPLITED && <PizzaEmpty />}
       </div>
     </>
