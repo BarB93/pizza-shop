@@ -22,6 +22,7 @@ export const pizzaSlice = createSlice({
   reducers: {
     resetPizzas: state => {
       state.pizzas = []
+      state.isInit = false
       state.currentPage = 0
     },
     setCurrentPage: (state, action:PayloadAction<number>) => {
