@@ -3,11 +3,24 @@ import { validationResult } from 'express-validator'
 
 import PizzaModel from '../models/Pizza'
 
+type PizzaGetOptions = {
+  title?: { $regex: RegExp }
+  category?: number
+}
+
 export const addPizza = async (req: Request, res: Response) => {
   const errors = validationResult(req)
 
   if (!errors.isEmpty()) {
     return res.status(400).json(errors.array())
+  }
+
+  const pizza = await PizzaModel.find().where({ title: req.body.title })
+
+  if (pizza) {
+    return res.status(400).json({
+      message: `title: "${req.body.title}", pizza with this title already exist`,
+    })
   }
 
   try {
@@ -39,19 +52,48 @@ export const addPizza = async (req: Request, res: Response) => {
 }
 
 export const getPizzas = async (req: Request, res: Response) => {
-  const { limit, page, search, category, sort } = req.query
-  console.log('limit', limit)
-  console.log('page', page)
+  let { limit, page, title, category, sort } = req.query
+  page = page || '0'
+  limit = limit || '8'
+  const options: PizzaGetOptions = {}
+
+  if (title) {
+    if (typeof title === 'string') {
+      const regex = new RegExp(title, 'i')
+      options.title = { $regex: regex }
+    }
+  }
+
+  if (category) {
+    options.category = Number(category)
+  }
 
   try {
-    // const count = await PizzaModel.count()
-    // const items = await PizzaModel.find()
-    let count: number = 3
-    let items
+    PizzaModel.find(options)
+      .sort(`${sort} _id`)
+      .skip(Number(page) * Number(limit))
+      .limit(Number(limit))
+      .exec((err, doc) => {
+        if (err) {
+          return res.json(err)
+        }
 
-    res.json({
-      items,
-      count,
+        PizzaModel.countDocuments(options).exec((count_error, count) => {
+          if (err) {
+            return res.json(count_error)
+          }
+          return res.json({
+            count,
+            page: page,
+            pageSize: doc.length,
+            items: doc,
+          })
+        })
+      })
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error while get pizzas',
+      error,
     })
-  } catch (error) {}
+  }
 }
