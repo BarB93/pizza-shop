@@ -9,9 +9,9 @@ import CircleControl from '../UI/Controls/CircleControl'
 
 import styles from './CartItem.module.scss'
 
-const CartItem: React.FC<OrderItem> = ({ id, title, typeIndex, sizes, sizeIndex, prices, quantity, weights }) => {
+const CartItem: React.FC<OrderItem> = ({ _id, title, typeIndex, sizes, sizeIndex, prices, quantity, weights }) => {
   const dispatch = useAppDispatch()
-  const cartItem = { id, sizeIndex, typeIndex }
+  const cartItem = { _id, sizeIndex, typeIndex }
 
   const removeItemHandler = () => {
     if (window.confirm(`Вы действительно хотите удалить пиццу ${title}, ${sizes[sizeIndex]} см. ${pizzaTypes[typeIndex]} тесто?`)) {

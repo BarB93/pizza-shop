@@ -8,10 +8,11 @@ export const pizzaTypes: string[] = ['тонкое', 'традиционное']
 const initialState: PizzaSliceState = {
   pizzas: [],
   status: Status.COMPLITED,
+  isInit: false,
 
-  totalCountPizzas: 26,
-  currentPage: 1,
-  totalCountPages: Math.ceil(26 / 8),
+  totalCountPizzas: 30,
+  currentPage: 0,
+  totalCountPages: Math.ceil(30 / 8),
   limit: 8,
 }
 
@@ -21,7 +22,7 @@ export const pizzaSlice = createSlice({
   reducers: {
     resetPizzas: state => {
       state.pizzas = []
-      state.currentPage = 1
+      state.currentPage = 0
     },
     setCurrentPage: (state, action:PayloadAction<number>) => {
       state.currentPage = action.payload
@@ -32,7 +33,11 @@ export const pizzaSlice = createSlice({
       state.status = Status.LOADING
     })
     builder.addCase(fetchPizzas.fulfilled, (state, action) => {
-      state.pizzas.push(...action.payload)
+      if(!state.isInit) state.isInit = true
+
+      state.pizzas.push(...action.payload.items)
+      state.totalCountPizzas = action.payload.count
+      state.totalCountPages = Math.ceil(state.totalCountPizzas / state.limit)
       state.status = Status.COMPLITED
       state.currentPage++
     })

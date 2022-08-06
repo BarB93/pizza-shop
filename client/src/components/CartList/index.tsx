@@ -8,7 +8,7 @@ const CartList: React.FC = () => {
   return (
     <>
       {order.map(item => (
-        <CartItem key={item.id + item.sizeIndex + item.typeIndex} {...item} />
+        <CartItem key={item._id + item.sizeIndex + item.typeIndex} {...item} />
       ))}
     </>
   )

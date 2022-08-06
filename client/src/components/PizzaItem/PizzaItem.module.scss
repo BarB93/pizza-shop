@@ -73,10 +73,10 @@
     @media screen and (max-width: $tablet-2) {
       font-size: 18px;
     }
+  }
 
-    .active & {
-      opacity: 0;
-    }
+  &.active .title {
+    opacity: 0;
   }
 
   .description {
@@ -85,10 +85,10 @@
     color: rgb(120, 124, 130);
     line-height: 1.3;
     overflow: hidden;
+  }
 
-    .active & {
-      opacity: 0;
-    }
+  &.active .description {
+    opacity: 0;
   }
 
   .selector {
@@ -117,10 +117,10 @@
     align-items: flex-end;
     justify-content: space-between;
     padding-right: 5px;
+  }
 
-    .active & {
-      opacity: 0;
-    }
+  &.active .bottom {
+    opacity: 0;
   }
 
   .price {
@@ -162,7 +162,7 @@
       margin-top: 15px;
     }
 
-    .bottom {
+    .selectorBottom {
       margin-top: 20px;
     }
 

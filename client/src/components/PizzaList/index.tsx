@@ -12,20 +12,23 @@ import { setCategoryId } from '../../redux/slices/category/slice'
 import { setSearch } from '../../redux/slices/search/slice'
 import { setSortId, sortItems } from '../../redux/slices/sort/slice'
 
+import { DEFAULT_SORT_ID } from './../../utils/consts'
 import PizzaItem from '../PizzaItem'
 import PizzaItemSkeleton from '../PizzaItem/PizzaItemSkeleton'
+import PizzaEmpty from '../PizzaEmpty/PizzaEmpty'
 
 import styles from './PizzaList.module.scss'
-import PizzaEmpty from '../PizzaEmpty/PizzaEmpty'
 
 const PizzaList: React.FC = () => {
   const dispatch = useAppDispatch()
-  const { pizzas, limit, currentPage, totalCountPages, status } = useAppSelector(state => state.pizza)
+  const { pizzas, limit, currentPage, totalCountPages, status, isInit } = useAppSelector(state => state.pizza)
   const sortId = useAppSelector(state => state.sort.sortId)
   const categoryId = useAppSelector(state => state.category.categoryId)
   const search = useAppSelector(state => state.search.value)
   const [params, setParams] = useSearchParams()
   const isMounted = useRef<boolean>(false)
+  const searchRef = useRef(search)
+  const categoryRef = useRef(categoryId)
   // library for IntersectionObserverAPI
   const { ref: lastElement, inView } = useInView({
     threshold: 0,
@@ -40,9 +43,8 @@ const PizzaList: React.FC = () => {
       case 'title':
         dispatch(setSearch(value))
         break
-      case 'sortBy':
-        const order = params.get('order')
-        const sortIndex: number = sortItems.findIndex(el => (el.value ? el.value.name === value && el.value.order === order : 0))
+      case 'sort':
+        const sortIndex: number = sortItems.findIndex(el => (el.value ? el.value === value : DEFAULT_SORT_ID))
         dispatch(setSortId(sortIndex))
         break
 
@@ -86,6 +88,9 @@ const PizzaList: React.FC = () => {
       )
     }
 
+    searchRef.current = search
+    categoryRef.current = categoryId
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, isMounted, pizzas])
 
@@ -99,7 +104,7 @@ const PizzaList: React.FC = () => {
       const queryString = qs.stringify({
         ...(categoryId ? { category: categoryId } : {}),
         ...(search ? { title: search } : {}),
-        ...(sortItem && sortItem.name && sortItem.order ? { sortBy: sortItem.name, order: sortItem.order } : {}),
+        ...(sortItem ? { sort: sortItem } : {}),
       })
 
       // if empty then clean query string
@@ -122,7 +127,7 @@ const PizzaList: React.FC = () => {
         {/* last element for intersection observer */}
         {status === Status.COMPLITED && <div className={styles.lastElement} ref={lastElement}></div>}
         {/* TODO barb: когда сделаю сервер, проверку дулать по возвражаемым данным с сервера, а имменно кол-во пицц */}
-        {pizzas.length === 0 && status === Status.COMPLITED && <PizzaEmpty />}
+        {pizzas.length === 0 && status === Status.COMPLITED && isInit && <PizzaEmpty />}
       </div>
     </>
   )

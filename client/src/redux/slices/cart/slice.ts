@@ -20,7 +20,7 @@ const cartSlice = createSlice({
     addToOrder: (state, action: PayloadAction<OrderItem>) => {
       const addPizza = action.payload
       // check there are already pizza in cart with same id, size and type
-      const index = state.order.findIndex(item => item.id === addPizza.id && item.sizeIndex === addPizza.sizeIndex && item.typeIndex === addPizza.typeIndex)
+      const index = state.order.findIndex(item => item._id === addPizza._id && item.sizeIndex === addPizza.sizeIndex && item.typeIndex === addPizza.typeIndex)
       if (index === -1) {
         state.order.push({ ...addPizza, quantity: 1 })
       } else {
@@ -30,7 +30,7 @@ const cartSlice = createSlice({
       saveOrderToLocalStorage(state.order)
     },
     removeFromOrder: (state, action: PayloadAction<CartItemType>) => {
-      const index = state.order.findIndex(item => item.id === action.payload.id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
+      const index = state.order.findIndex(item => item._id === action.payload._id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
       state.order.splice(index, 1)
       calculationOrderValues(state)
       saveOrderToLocalStorage(state.order)
@@ -43,13 +43,13 @@ const cartSlice = createSlice({
       saveOrderToLocalStorage(state.order)
     },
     increment: (state, action: PayloadAction<CartItemType>) => {
-      const index = state.order.findIndex(item => item.id === action.payload.id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
+      const index = state.order.findIndex(item => item._id === action.payload._id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
       state.order[index].quantity++
       calculationOrderValues(state)
       saveOrderToLocalStorage(state.order)
     },
     decrement: (state, action: PayloadAction<CartItemType>) => {
-      const index = state.order.findIndex(item => item.id === action.payload.id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
+      const index = state.order.findIndex(item => item._id === action.payload._id && item.typeIndex === action.payload.typeIndex && item.sizeIndex === action.payload.sizeIndex)
       state.order[index].quantity > 1 && state.order[index].quantity--
       calculationOrderValues(state)
       saveOrderToLocalStorage(state.order)

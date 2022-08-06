@@ -1,4 +1,4 @@
-import { Pizza, PizzasFetchParams } from '../redux/slices/pizza/types'
+import { PizzaData, PizzasFetchParams } from '../redux/slices/pizza/types'
 import { $host } from './index'
 
 const pizzaAPI = {
@@ -9,16 +9,16 @@ const pizzaAPI = {
     const limit = params?.limit
     const currentPage = params?.currentPage
 
-    const { data } = await $host.get<Pizza[]>('/pizzas', {
+    const { data } = await $host.get<PizzaData>('/api/pizza', {
       params: {
         ...(search ? { title: search } : {}),
         ...(category ? { category: params.category } : {}),
-        ...(sort?.name && sort?.order ? { sortBy: sort.name, order: sort.order } : {}),
+        ...(sort ? { sort } : {}),
         ...(limit ? { limit } : {}),
         ...(currentPage ? { page: currentPage } : {}),
       },
     })
-    return data as Pizza[]
+    return data as PizzaData
   },
 }
 

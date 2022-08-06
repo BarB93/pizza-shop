@@ -1,13 +1,13 @@
-import { SortItemValue } from "../sort/types"
+import { SortName } from '../sort/types'
 
 export enum Status {
   LOADING = 'loading',
   COMPLITED = 'complited',
-  ERROR = 'error'
+  ERROR = 'error',
 }
 
 export type Pizza = {
-  id: number
+  _id: string
   imageUrl: string
   title: string
   description: string
@@ -20,6 +20,11 @@ export type Pizza = {
   rating: number
 }
 
+export type PizzaData = {
+  items: Pizza[]
+  count: number
+}
+
 export interface PizzaSliceState {
   pizzas: Pizza[]
   status: Status
@@ -27,12 +32,13 @@ export interface PizzaSliceState {
   currentPage: number
   totalCountPages: number
   limit: number
+  isInit: boolean
 }
 
 export type PizzasFetchParams = {
   limit: number
   currentPage: number
   category?: number
-  sort?: SortItemValue
+  sort?: SortName | null
   search?: string
 }

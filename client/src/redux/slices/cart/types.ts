@@ -7,7 +7,7 @@ export type OrderItem = Pizza & {
 }
 
 export type CartItemType = {
-  id: number
+  _id: string
   sizeIndex: number
   typeIndex: number
 }

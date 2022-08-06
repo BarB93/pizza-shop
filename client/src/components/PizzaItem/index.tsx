@@ -97,7 +97,7 @@ const PizzaItem: React.FC<PizzaItemProps> = ({ pizza }) => {
               </li>
             ))}
           </ul>
-          <div className={styles.bottom}>
+          <div className={styles.selectorBottom}>
             <button className={styles.btn} onClick={addToOrderHandler}>
               <span>В корзину</span>
               <span>{prices[activeSize]} ₽</span>
